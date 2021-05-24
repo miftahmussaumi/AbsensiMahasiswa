@@ -50,8 +50,8 @@ class KrsController extends Controller
     {
         $kelas = Kelas::find($id);
         // $pert = Pertemuan::find('kelas_id','=','$id')->get();
-        $pert = Pertemuan::find('$id', 'pertemuan_ke', 'kelas_id');
-        return view('Halaman.krs',compact('kelas','pert'));   
+        // $pert = Pertemuan::find('$id', 'pertemuan_ke', 'kelas_id');
+        return view('Halaman.krs',compact('kelas'));   
     }
 
     /**

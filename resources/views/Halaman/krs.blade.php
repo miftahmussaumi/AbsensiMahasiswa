@@ -17,10 +17,8 @@
                 <b>Tahun : </b> {{$kelas->tahun}} <br>
                 <b>Semester : </b> {{$kelas->semester}} <br>
                 <b>Jumlah SKS : </b> {{$kelas->sks}} <br>
-                for($pert as $pt){
                 <b>Pertemuan :</b><br>
-                <p>Pertemuan ke-</p>{{$pert->pertemuan_ke}}<br>
-                };
+                <p>Pertemuan ke-</p><br>
                 <a href="{{route('tambah-pertemuan')}}"><input type="button" value="+ Pertemuan" class="btn btn-success"></a>
             </div>
             <div class="col-sm-7 invoice-col">
