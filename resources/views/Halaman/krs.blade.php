@@ -18,8 +18,12 @@
                 <b>Semester : </b> {{$kelas->semester}} <br>
                 <b>Jumlah SKS : </b> {{$kelas->sks}} <br>
                 <b>Pertemuan :</b><br>
-                <p>Pertemuan ke-</p><br>
+                @foreach($pert as $dt)
+                <a href="#">Pertemuan ke-{{$dt->pertemuan_ke}}</a>
+                @endforeach
+                <br><br>
                 <a href="{{route('tambah-pertemuan')}}"><input type="button" value="+ Pertemuan" class="btn btn-success"></a>
+                <a href="#"><input type="button" value="+ Mahasiswa" class="btn btn-success"></a>
             </div>
             <div class="col-sm-7 invoice-col">
                 <table id="example2" class="table table-bordered table-hover">
@@ -31,7 +35,13 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        @foreach($krs as $mhs)
+                        <tr>
+                            <td>{{$mhs->nim}}</td>
+                            <td>{{$mhs->nama}}</td>
+                            <td>hm</td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

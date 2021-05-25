@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Krs;
 use App\Models\Kelas;
 use App\Models\Pertemuan;
+use Illuminate\Support\Facades\DB;
 
 class KrsController extends Controller
 {
@@ -46,12 +47,32 @@ class KrsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->Krs= new Krs();
+    }
+
     public function show($id)
     {
         $kelas = Kelas::find($id);
-        // $pert = Pertemuan::find('kelas_id','=','$id')->get();
-        // $pert = Pertemuan::find('$id', 'pertemuan_ke', 'kelas_id');
-        return view('Halaman.krs',compact('kelas'));   
+        $krs = DB::table('kelas')
+        ->join('krs', 'krs.kelas_id', '=', 'kelas.id')
+        ->rightJoin('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
+        ->where('kelas.id', '=', $id)
+        ->get([
+            'mahasiswa.nama', 'mahasiswa.nim',
+        ]);
+        $pert = DB::table('kelas')
+        ->join('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
+        ->where('kelas.id','=',$id)
+        ->get([
+            'pertemuan.pertemuan_ke', 'pertemuan.tanggal', 'pertemuan.materi']);
+        // echo "<pre>";
+        // print_r($krs);
+        // $data = [
+        //     'krs'=> $this->Krs->allData(),
+        // ];
+        return view('Halaman.krs',compact('krs','kelas','pert'));   
     }
 
     /**

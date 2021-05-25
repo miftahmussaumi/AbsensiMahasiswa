@@ -43,7 +43,7 @@ class PertemuanController extends Controller
             'tanggal' => $request->tanggal,
             'materi' => $request->materi 
         ]);
-    return redirect('pertemuan');
+    return redirect('kelas');
     }
 
     /**

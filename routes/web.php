@@ -42,5 +42,4 @@ Route::group(['middleware'=>['auth']], function(){
     Route::post('/simpan-kelas', [KelasController::class, 'store'])->name('simpan-kelas');
     //KRS
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
-
 });
