@@ -19,10 +19,11 @@
                 <b>Jumlah SKS : </b> {{$kelas->sks}} <br>
                 <b>Pertemuan :</b><br>
                 @foreach($pert as $dt)
-                <a href="#">Pertemuan ke-{{$dt->pertemuan_ke}}</a>
+                <a href="{{url('detail-pertemuan',$dt->pertemuan_id)}}">Pertemuan ke-{{$dt->pertemuan_ke}}</a>
+                <input type="hidden" value="{{$kelas->id}}" name="kelas_id">
                 @endforeach
                 <br><br>
-                <a href="{{route('tambah-pertemuan')}}"><input type="button" value="+ Pertemuan" class="btn btn-success"></a>
+                <a href="{{url('tambah-pertemuan',$dt->kelas_id)}}"><input type="button" value="+ Pertemuan" class="btn btn-danger"></a>
                 <a href="#"><input type="button" value="+ Mahasiswa" class="btn btn-success"></a>
             </div>
             <div class="col-sm-7 invoice-col">
@@ -48,6 +49,5 @@
             <!-- /.col -->
         </div>
     </div>
-
 </div>
 @endsection

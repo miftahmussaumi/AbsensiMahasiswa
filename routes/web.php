@@ -34,7 +34,8 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
     // Pertemuan
     Route::get('/pertemuan', [PertemuanController::class, 'index'])->name('pertemuan');
-    Route::get('/tambah-pertemuan', [PertemuanController::class, 'create'])->name('tambah-pertemuan');
+    Route::get('/detail-pertemuan/{id}', [PertemuanController::class, 'showDetail'])->name('detail-pertemuan');
+    Route::get('/tambah-pertemuan/{id}', [PertemuanController::class, 'show'])->name('tambah-pertemuan');
     Route::post('/simpan-pertemuan', [PertemuanController::class, 'store'])->name('simpan-pertemuan');
     // Kelas
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');

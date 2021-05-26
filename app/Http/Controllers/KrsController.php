@@ -60,18 +60,16 @@ class KrsController extends Controller
         ->rightJoin('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
         ->where('kelas.id', '=', $id)
         ->get([
-            'mahasiswa.nama', 'mahasiswa.nim',
+            'mahasiswa.nama', 'mahasiswa.nim','kelas.id'
         ]);
         $pert = DB::table('kelas')
         ->join('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
         ->where('kelas.id','=',$id)
+        ->orderBy('pertemuan.pertemuan_ke')
         ->get([
-            'pertemuan.pertemuan_ke', 'pertemuan.tanggal', 'pertemuan.materi']);
+            'pertemuan.pertemuan_ke','pertemuan.id AS pertemuan_id','kelas.id AS kelas_id']);
         // echo "<pre>";
         // print_r($krs);
-        // $data = [
-        //     'krs'=> $this->Krs->allData(),
-        // ];
         return view('Halaman.krs',compact('krs','kelas','pert'));   
     }
 
