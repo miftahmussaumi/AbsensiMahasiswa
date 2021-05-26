@@ -46,6 +46,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'mahasiswa' => [
+        'driver'=> 'session',
+        'provider' => 'mahasiswa'
+        ],
+
+        'user' => [
+            'driver'=> 'session',
+            'provider' => 'users'
+        ],
     ],
 
     /*
@@ -71,10 +81,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'mahasiswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mahasiswa::class,
+        ],
     ],
 
     /*

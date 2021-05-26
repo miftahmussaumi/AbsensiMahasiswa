@@ -62,7 +62,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <img src="{{asset('img/profil.png')}}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Nama User</a>
+            @if (Str::length(Auth::guard('mahasiswa')->user()) > 0)
+            <a href="#" class="d-block">({ Auth::guard('mahasiswa')->user()->name })</a>
+            @elseif (Str::length(Auth::guard('user')->user()) > 0)
+            <a href="#" class="d-block">({ Auth::guard('user')->user()->name })</a>
+            @endif
           </div>
         </div>
 
@@ -99,15 +103,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('kelas')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Kelas</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="{{route('mahasiswa')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Mahasiswa</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('kelas')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kelas</p>
                   </a>
                 </li>
                 <li class="nav-item">

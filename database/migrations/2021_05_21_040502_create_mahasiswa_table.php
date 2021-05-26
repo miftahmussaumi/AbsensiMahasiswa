@@ -17,8 +17,8 @@ class CreateMahasiswaTable extends Migration
             $table->id();
             $table->string('nama',50);
             $table->string('nim',10);
-            $table->string('email',30);
-            $table->string('password',15);
+            $table->string('email',30)->unique();
+            $table->string('password',255);
             $table->timestamps();
         });
     }
