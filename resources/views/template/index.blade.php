@@ -1,3 +1,9 @@
+<?php
+use App\Models\User;
+use App\Models\Mahasiswa;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -63,25 +69,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <div class="info">
             @if (Str::length(Auth::guard('mahasiswa')->user()) > 0)
-            <a href="#" class="d-block">({ Auth::guard('mahasiswa')->user()->name })</a>
+            <a href="#" class="d-block">{{ Auth::guard('mahasiswa')->user()->nama }}</a>
             @elseif (Str::length(Auth::guard('user')->user()) > 0)
-            <a href="#" class="d-block">({ Auth::guard('user')->user()->name })</a>
+            <a href="#" class="d-block">{{ Auth::guard('user')->user()->name }}</a>
             @endif
           </div>
         </div>
-
-        <!-- SidebarSearch Form -->
-        <!-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -91,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Starter Pages
+                  Menu
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -115,27 +108,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('pertemuan')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Pertemuan</p>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a href="{{route('logout')}}" class="nav-link">
                     <!-- <i class="far fa-circle nav-icon"></i> -->
                     <p>Logout</p>
                   </a>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Simple Link
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
             </li>
           </ul>
         </nav>
@@ -185,12 +163,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main Footer -->
     <footer class="main-footer">
-      <!-- To the right -->
-      <div class="float-right d-none d-sm-inline">
-        Anything you want
-      </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; FantasticFour <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
     </footer>
   </div>
   <!-- ./wrapper -->

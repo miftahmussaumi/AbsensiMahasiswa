@@ -63,7 +63,7 @@ class KrsController extends Controller
             'mahasiswa.nama', 'mahasiswa.nim','kelas.id'
         ]);
         $pert = DB::table('kelas')
-        ->join('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
+        ->leftJoin('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
         ->where('kelas.id','=',$id)
         ->orderBy('pertemuan.pertemuan_ke')
         ->get([

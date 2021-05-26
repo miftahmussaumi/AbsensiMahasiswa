@@ -44,11 +44,12 @@ class PertemuanController extends Controller
             'kelas_id'=> $request->kelas_id,
             'pertemuan_ke' => $request->pertemuan_ke,
             'tanggal' => $request->tanggal,
-            'materi' => $request->materi 
+            'materi' => $request->materi
         ]);
+        return redirect('detail');
         // return redirect('detail', '1');
         // return url('detail', '$kelas_id');
-        return redirect('kelas');
+        // return redirect('kelas');
     }
 
     /**
