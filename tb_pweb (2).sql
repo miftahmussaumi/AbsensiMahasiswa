@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2021 at 10:45 AM
+-- Generation Time: May 27, 2021 at 11:30 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -37,6 +37,14 @@ CREATE TABLE `absensi` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`id`, `krs_id`, `pertemuan_id`, `jam_masuk`, `jam_keluar`, `durasi`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, '03:50:22', '04:50:22', 1, NULL, NULL),
+(2, 2, 2, '10:50:22', '12:50:22', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -79,7 +87,8 @@ CREATE TABLE `kelas` (
 INSERT INTO `kelas` (`id`, `kode_kelas`, `kode_matkul`, `nama_matkul`, `tahun`, `semester`, `sks`, `created_at`, `updated_at`) VALUES
 (1, 'K001', 'M001', 'Pemrograman Web', 2021, 2, 4, '2021-05-23 01:43:21', '2021-05-23 01:43:21'),
 (2, 'K002', 'M002', 'Apsi', 2021, 2, 3, '2021-05-23 18:33:47', '2021-05-23 18:33:47'),
-(3, 'K003', 'M003', 'DIT', 2020, 1, 3, '2021-05-25 01:04:00', '2021-05-25 01:04:00');
+(3, 'K003', 'M003', 'DIT', 2020, 1, 3, '2021-05-25 01:04:00', '2021-05-25 01:04:00'),
+(4, 'K004', 'M004', 'Sistem Operasi', 2020, 1, 4, '2021-05-26 18:23:51', '2021-05-26 18:23:51');
 
 -- --------------------------------------------------------
 
@@ -100,8 +109,14 @@ CREATE TABLE `krs` (
 --
 
 INSERT INTO `krs` (`id`, `kelas_id`, `mahasiswa_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '2021-05-24 01:43:21', '2021-05-24 03:32:25'),
-(2, 1, 1, '2021-05-24 03:32:25', '2021-05-24 03:32:25');
+(1, 1, 3, '2021-05-27 01:19:12', '2021-05-27 01:19:12'),
+(2, 1, 1, '2021-05-27 01:23:01', '2021-05-27 01:23:01'),
+(3, 2, 5, '2021-05-27 06:43:39', '2021-05-27 06:43:39'),
+(4, 2, 2, '2021-05-27 01:19:42', '2021-05-27 01:19:42'),
+(5, 3, 5, '2021-05-27 06:43:39', '2021-05-27 06:43:39'),
+(6, 2, 1, '2021-05-27 01:26:31', '2021-05-27 01:26:31'),
+(7, 3, 3, '2021-05-27 01:26:31', '2021-05-27 01:26:31'),
+(8, 4, 1, '2021-05-27 01:27:59', '2021-05-27 01:27:59');
 
 -- --------------------------------------------------------
 
@@ -124,8 +139,13 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Miftah', '1911522009', 'testing@gmail.com', '1234', '2021-05-24 03:31:23', '2021-05-24 03:31:23'),
-(2, 'Lala', '1911522013', 'ups@gmail.com', '5678', '2021-05-24 03:31:23', '2021-05-24 03:31:23');
+(1, 'Aufa', '1911522013', 'aufawelza@gmail.com', '$2y$10$Rzt4fYvDv9R9yAR/N85nUO0jfqpWBG3g6VzY28p79Tc5k5LTpAZhO', '2021-05-26 01:37:58', '2021-05-26 01:37:58'),
+(2, 'kevin', '1911523009', 'kevin@gmail.com', '$2y$10$KQTCs22tO5ctt6sHJuFW..n7QNEba17BjAVnpTWae/Zm.DRZXvOc6', '2021-05-26 18:12:37', '2021-05-26 18:16:00'),
+(3, 'Miftah', '1911522009', 'miftah@gmail.com', '$2y$10$gjeyjM6vPIP/ISvmTsi0feo873w3oDV3p0pWByFZEBi97f2WBayVe', NULL, NULL),
+(4, 'testing', '191382940', 'testing@gmail.com', '$2y$10$3XoiOmst4Y39w2xCTTXpR.0O3CK70oJvTt88XovfmOvUXNN//YC1u', '2021-05-26 23:34:46', '2021-05-26 23:34:46'),
+(5, 'fathia', '1911523025', 'fathia@gmail.com', '$2y$10$.RSFg17jsACx4nUfmuhF..9P8rwbGnd4CT17zW018bU28W8usl0LW', '2021-05-26 23:40:56', '2021-05-26 23:40:56'),
+(10, 'Lala', '123456', 'lala@gmail.com', '12345', '2021-05-27 02:12:51', '2021-05-27 02:12:51'),
+(11, 'Gita', '1911522011', 'gita@gmail.com', '12345', '2021-05-27 02:15:16', '2021-05-27 02:15:16');
 
 -- --------------------------------------------------------
 
@@ -195,7 +215,8 @@ INSERT INTO `pertemuan` (`id`, `kelas_id`, `pertemuan_ke`, `tanggal`, `materi`, 
 (2, 2, 1, '2021-05-24', 'dfgfdgdf', '2021-05-23 22:14:32', '2021-05-23 22:14:32'),
 (3, 1, 1, '2021-05-24', 'dfre', NULL, NULL),
 (4, 1, 3, '2021-05-25', 'ini pertemuan 3', '2021-05-25 01:18:18', '2021-05-25 01:18:18'),
-(11, 1, 4, '2021-05-26', '4', '2021-05-25 01:28:33', '2021-05-25 01:28:33');
+(5, 1, 4, '2021-05-13', 'r', '2021-05-25 03:36:35', '2021-05-25 03:36:35'),
+(28, 1, 5, '2021-05-27', 'f', '2021-05-25 23:31:59', '2021-05-25 23:31:59');
 
 -- --------------------------------------------------------
 
@@ -219,7 +240,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Miftah Mussaumi', 'miftahmussaumi84@gmail.com', NULL, '$2y$10$b2b5SkUArhmtifGX4FRbkOfcml94ydTUgtzkSwYPi1411M9e2g6w6', 'OBUSL4Gfc9O6PQw0fgeBoNJnuULPdCbV6WXBB4qcgnpsPb0l6VnBxYY9HF2C', '2021-05-22 17:26:09', '2021-05-22 17:26:09');
+(1, 'Admin 1', 'miftahmussaumi84@gmail.com', NULL, '$2y$10$b2b5SkUArhmtifGX4FRbkOfcml94ydTUgtzkSwYPi1411M9e2g6w6', 'p68ZgE7l5haXv8oCVtQH0sPx0HDTtx6pGZYFusWOPFM0JZPpUkweNWJYzmwa', '2021-05-22 17:26:09', '2021-05-22 17:26:09');
 
 --
 -- Indexes for dumped tables
@@ -294,7 +315,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -306,19 +327,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -330,7 +351,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pertemuan`
 --
 ALTER TABLE `pertemuan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
