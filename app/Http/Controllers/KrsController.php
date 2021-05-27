@@ -57,7 +57,7 @@ class KrsController extends Controller
         $kelas = Kelas::find($id);
         $krs = DB::table('kelas')
         ->join('krs', 'krs.kelas_id', '=', 'kelas.id')
-        ->rightJoin('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
+        ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
         ->where('kelas.id', '=', $id)
         ->get([
             'mahasiswa.nama', 'mahasiswa.nim','kelas.id'

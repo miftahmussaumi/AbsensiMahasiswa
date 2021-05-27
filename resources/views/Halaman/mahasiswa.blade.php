@@ -11,7 +11,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">+Tambah Data</h3>
+                    <a href="{{route('tambah-mahasiswa')}}">
+                        <input type="button" value="+ Mahasiswa" class="btn btn-success">
+                    </a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -21,12 +23,19 @@
                                 <th>Nama</th>
                                 <th>Nim</th>
                                 <th>Email</th>
-                                <th>Password</th>
+                                <th>#</th>
                             </tr>
                         </thead>
+                        @foreach ($dtMahasiswa as $data)
                         <tbody>
-                            
+                            <tr>
+                                <td>{{ $data->nama }}</td>
+                                <td>{{ $data->nim }}</td>
+                                <td>{{ $data->email }}</td>
+                                <td></td>
+                            </tr>
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
                 <!-- /.card-body -->

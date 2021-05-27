@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\User;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
@@ -78,8 +79,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -88,6 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              @if (Str::length(Auth::guard('user')->user()) > 0)
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('home')}}" class="nav-link">
@@ -107,9 +107,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>Kelas</p>
                   </a>
                 </li>
+                @elseif(Str::length(Auth::guard('mahasiswa')->user()) > 0)
+                <li class="nav-item">
+                  <a href="{{url('mhs',Auth::guard('mahasiswa')->user()->id)}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Halaman Mahasiswa</p>
+                  </a>
+                </li>
+                @endif
                 <li class="nav-item">
                   <a href="{{route('logout')}}" class="nav-link">
-                    <!-- <i class="far fa-circle nav-icon"></i> -->
                     <p>Logout</p>
                   </a>
                 </li>

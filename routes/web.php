@@ -7,6 +7,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KrsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\RouteGroup;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,11 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
 
+    //Mahasiswa
+    Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+    Route::get('/tambah-mahasiswa', [MahasiswaController::class, 'create'])->name('tambah-mahasiswa');
+    Route::post('/simpan-mahasiswa', [MahasiswaController::class, 'store'])->name('simpan-mahasiswa');
+    
     // Pertemuan
     Route::get('/pertemuan', [PertemuanController::class, 'index'])->name('pertemuan');
     Route::get('/detail-pertemuan/{id}', [PertemuanController::class, 'showDetail'])->name('detail-pertemuan');
@@ -40,10 +46,15 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::post('/simpan-pertemuan', [PertemuanController::class, 'store'])->name('simpan-pertemuan');
 
     // Kelas
-    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+    Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
     Route::get('/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
     Route::post('/simpan-kelas', [KelasController::class, 'store'])->name('simpan-kelas');
 
     //KRS
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
+
+    //HalamanMahasiswa
+    Route::get('/mhs/{mahasiswa_id}', [MahasiswaController::class, 'show']);
+    //DetailKelasMahasiswa
+    Route::get('/detail-kelas/{krs_id}', [MahasiswaController::class, 'showDetail'])->name('detail-kelas');
 });
