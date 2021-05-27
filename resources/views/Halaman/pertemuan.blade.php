@@ -18,6 +18,7 @@
                 <b>Tahun : </b> {{$pt->tahun}} <br>
                 <b>Semester : </b> {{$pt->semester}} <br>
                 <b>Jumlah SKS : </b> {{$pt->sks}} <br>
+                <b>Materi : {{$pt->materi}}</b><br>
                 @endforeach
                 <a href="{{url('detail',$pt->kelas_id)}}">Back</a>
             </div>

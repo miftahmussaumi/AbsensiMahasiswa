@@ -40,7 +40,7 @@
                         <tr>
                             <td>{{$mhs->nim}}</td>
                             <td>{{$mhs->nama}}</td>
-                            <td>hm</td>
+                            <td>tombol Hapus</td>
                         </tr>
                         @endforeach
                     </tbody>
