@@ -5,6 +5,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KrsController;
+use App\Http\Controllers\ImportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +44,7 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::get('/pertemuan', [PertemuanController::class, 'index'])->name('pertemuan');
     Route::get('/detail-pertemuan/{id}', [PertemuanController::class, 'showDetail'])->name('detail-pertemuan');
     Route::get('/tambah-pertemuan/{id}', [PertemuanController::class, 'show'])->name('tambah-pertemuan');
-    Route::post('/simpan-pertemuan', [PertemuanController::class, 'store'])->name('simpan-pertemuan');
+    Route::post('/simpan-pertemuan/{id}', [PertemuanController::class, 'store'])->name('simpan-pertemuan');
 
     // Kelas
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
@@ -53,8 +54,13 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     //KRS
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
 
+    //Import
+    Route::get('/import', [ImportController::class, 'create']);
+    Route::post('/save-import', [ImportController::class, 'store']);
+
     //HalamanMahasiswa
     Route::get('/mhs/{mahasiswa_id}', [MahasiswaController::class, 'show']);
     //DetailKelasMahasiswa
     Route::get('/detail-kelas/{krs_id}', [MahasiswaController::class, 'showDetail'])->name('detail-kelas');
+
 });

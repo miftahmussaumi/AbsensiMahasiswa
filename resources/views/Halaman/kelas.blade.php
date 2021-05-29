@@ -9,14 +9,24 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Succes!</h5>
+                Data Kelas Berhasi Ditambahkan
+            </div>
+            @elseif(session('fail'))
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                Kode Kelas Sudah Ada
+            </div>
+            @endif
             <div class="card">
-                <div class="card-header">
-                    <a href="{{route('tambah-kelas')}}">
-                        <input type="button" value="+ Kelas" class="btn btn-success">
-                    </a>
-                </div>
-                <!-- /.card-header -->
                 <div class="card-body">
+                    <a href="{{route('tambah-kelas')}}">
+                        <input type="button" value="+ Kelas" class="btn btn-danger">
+                    </a>
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>

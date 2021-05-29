@@ -19,8 +19,10 @@
                 <b>Jumlah SKS : </b> {{$kelas->sks}} <br>
                 <b>Pertemuan :</b><br>
                 @foreach($pert as $dt)
-                <a href="{{url('detail-pertemuan',$dt->pertemuan_id)}}">Pertemuan ke-{{$dt->pertemuan_ke}}</a>
-                <input type="hidden" value="{{$kelas->id}}" name="kelas_id">
+                    @if($dt->pertemuan_ke > 0)
+                    <a href="{{url('detail-pertemuan',$dt->pertemuan_id)}}">Pertemuan ke-{{$dt->pertemuan_ke}}</a>
+                    @else <p>Pertemuan Masih Kosong</p>
+                    @endif
                 @endforeach
                 <br><br>
                 <a href="{{url('tambah-pertemuan',$dt->kelas_id)}}"><input type="button" value="+ Pertemuan" class="btn btn-danger"></a>

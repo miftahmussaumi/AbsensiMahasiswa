@@ -8,40 +8,51 @@
 @section('container')
 <div class="container-fluid">
     <div class="invoice p-3 mb-3">
-        <form action="{{route('simpan-pertemuan')}}" method="post">
+        <form action="{{route('simpan-pertemuan',$kelas_id->id)}}" method="post">
             <div class="row invoice-info">
-                <div class="col-sm-5 invoice-col">
+                <div class="col-sm-3 invoice-col">
                     {{csrf_field()}}
                     <table>
-                    <input type="hidden" name="kelas_id" value="{{$kelas_id->id}}">
+                        <input type="hidden" name="kelas_id" value="{{$kelas_id->id}}">
                         <tr>
-                            <div class="form-group">
-                                <label>Kode Kelas</label>
-                                <input type="text" class="form-control" name="kode_kelas" value="{{$kelas_id->kode_kelas}}" readonly>
-                            </div>
+                            <td colspan="2" style="width: 50px">
+                                <div class="form-group">
+                                    <label>Kode Kelas</label>
+                                    <input type="text" class="form-control" name="kode_kelas" value="{{$kelas_id->kode_kelas}}" readonly>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <div class="form-group">
-                                <label>Pertemuan Ke-</label>
-                                <input type="number" class="form-control" min="0" name="pertemuan_ke" placeholder="Pertemuan ke-" required>
-                            </div>
+                            <td colspan="2">
+                                <div class="form-group">
+                                    <label>Pertemuan Ke-</label>
+                                    <input type="number" class="form-control" min="0" name="pertemuan_ke" placeholder="Pertemuan ke-" required>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <div class="form-group">
-                                <label>Tanggal:</label>
-                                <input type="date" class="form-control" name="tanggal" placeholder="Enter email" required>
-                            </div>
+                            <td colspan="2">
+                                <div class="form-group">
+                                    <label>Tanggal:</label>
+                                    <input type="date" class="form-control" name="tanggal" placeholder="Enter email" required>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <td>
+                                <a href="{{url('detail',$kelas_id->id)}}" class="btn btn-primary"><b>Back</b></a>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </td>
                         </tr>
                     </table>
                 </div>
-                <div class="col-sm-7 invoice-col">
+                <div class="col-sm-4 invoice-col">
                     <table>
                         <tr>
                             <label>Materi</label>
-                            <textarea class="form-control" name="materi" placeholder="Enter ..." required></textarea>
+                            <textarea style="height: 230px" class="form-control" name="materi" placeholder="Enter ..." required></textarea>
                         </tr>
                     </table>
                 </div>

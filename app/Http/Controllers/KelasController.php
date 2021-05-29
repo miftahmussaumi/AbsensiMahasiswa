@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use App\Http\Controllers\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller
 {
@@ -36,14 +38,24 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        Kelas::create([
-            'kode_kelas' => $request->kode_kelas,
-            'kode_matkul' => $request->kode_matkul,
-            'nama_matkul' => $request->nama_matkul,
-            'tahun' => $request->tahun,
-            'semester' => $request->semester,
-            'sks' => $request->sks
-        ]);
+        $kelas_kode = $request->kode_kelas;
+        $kls = DB::table('kelas') -> where('kode_kelas','=',$kelas_kode)->get();
+        $jml = count(collect($kls));
+        // echo "<pre>";
+        // print_r($jml);
+        if($jml > 0){
+            session()->flash('fail');
+        } else {
+            Kelas::create([
+                'kode_kelas' => $request->kode_kelas,
+                'kode_matkul' => $request->kode_matkul,
+                'nama_matkul' => $request->nama_matkul,
+                'tahun' => $request->tahun,
+                'semester' => $request->semester,
+                'sks' => $request->sks
+            ]);
+            session()->flash('success');
+        }
         return redirect('kelas');
     }
 
