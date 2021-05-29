@@ -9,6 +9,19 @@
 <div class="container-fluid">
     <div class="invoice p-3 mb-3">
         <form action="{{route('simpan-pertemuan',$kelas_id->id)}}" method="post">
+            @if(session('success'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Succes!</h5>
+                Pertemuan Berhasil Ditambahkan
+            </div>
+            @elseif(session('fail'))
+            <div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                Pertemuan sudah ada
+            </div>
+            @endif
             <div class="row invoice-info">
                 <div class="col-sm-3 invoice-col">
                     {{csrf_field()}}
@@ -40,10 +53,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href="{{url('detail',$kelas_id->id)}}" class="btn btn-primary"><b>Back</b></a>
+                                <a href="{{url('detail',$kelas_id->id)}}" class="btn btn-primary"><- Back</a>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-success"><b>Submit</b></button>
                             </td>
                         </tr>
                     </table>

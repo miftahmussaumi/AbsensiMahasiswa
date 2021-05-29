@@ -40,12 +40,27 @@ class PertemuanController extends Controller
     public function store(Request $request, $id)
     {
         // dd($request->all());
-        Pertemuan::create ([
-            'kelas_id'=> $request->kelas_id,
-            'pertemuan_ke' => $request->pertemuan_ke,
-            'tanggal' => $request->tanggal,
-            'materi' => $request->materi
-        ]);
+        // SELECT kelas.kode_kelas, pertemuan.pertemuan_ke FROM kelas JOIN pertemuan ON 
+        // pertemuan.kelas_id=kelas.id WHERE kelas.kode_kelas='K001' AND pertemuan.pertemuan_ke='2'
+        // $pert_ke = $request->pertemuan_ke;
+        $kls = DB::table('kelas')
+        ->join('pertemuan','pertemuan.kelas_id','=','kelas.id')
+        ->where('kelas.id', '=', $id)
+        ->get('pertemuan.pertemuan_ke');
+        // echo "<pre>";
+        // print_r($kls);
+        $jml = count(collect($kls));
+        if ($jml > 0) {
+            session()->flash('fail');
+        } else {
+            Pertemuan::create ([
+                'kelas_id'=> $request->kelas_id,
+                'pertemuan_ke' => $request->pertemuan_ke,
+                'tanggal' => $request->tanggal,
+                'materi' => $request->materi
+            ]);
+            session()->flash('success');
+        }
         $kelas_id = Kelas::find($id);
         return view('Halaman.create.c-pert', compact('kelas_id'));
     }
