@@ -11,29 +11,40 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{route('tambah-mahasiswa')}}">
-                        <input type="button" value="+ Mahasiswa" class="btn btn-success">
+                <a href="{{route('tambah-mahasiswa')}}">
+                        <input type="button" value="+ Mahasiswa" class="btn btn-danger">
                     </a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                @if (session('message'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Nama</th>
-                                <th>Nim</th>
+                                <th>NIM</th>
                                 <th>Email</th>
-                                <th>#</th>
+                                <th>Password</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         @foreach ($dtMahasiswa as $data)
                         <tbody>
-                            <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->nim }}</td>
                                 <td>{{ $data->email }}</td>
-                                <td></td>
-                            </tr>
+                                <td>{{ $data->password }}</td>
+                                <td>
+                                    <a href="{{ url('edit-mahasiswa',$data->id) }}"><i class="fas fa-edit"></i></a> 
+                                    |  
+                                    <a href="{{ url('delete-mahasiswa',$data->id) }}" onclick="return confirm('Apakah Yakin Hapus Data Mahasiswa Ini?')"><i class="fas fa-trash-alt" style="color:orange"></i></a>
+                                </td>
                         </tbody>
                         @endforeach
                     </table>

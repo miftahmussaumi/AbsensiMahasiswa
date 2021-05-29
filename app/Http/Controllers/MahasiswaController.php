@@ -44,7 +44,7 @@ class MahasiswaController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ]);
-        return redirect('mahasiswa');
+        return redirect('mahasiswa')->with('message','Data Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
@@ -96,7 +96,8 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mhs = Mahasiswa::findorfail($id);
+        return view('Halaman.edit.e-mahasiswa',compact('mhs'));
     }
 
     /**
@@ -108,7 +109,10 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mhs = Mahasiswa::findorfail($id);
+        $mhs->update($request->all());
+
+        return redirect('mahasiswa')->with('message','Data Mahasiswa Berhasil Diedit');
     }
 
     /**
@@ -119,6 +123,8 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mhs = Mahasiswa::findorfail($id);
+        $mhs->delete();
+        return back()->with('message','Data Mahasiswa Berhasil Dihapus');
     }
 }

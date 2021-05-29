@@ -39,6 +39,9 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/tambah-mahasiswa', [MahasiswaController::class, 'create'])->name('tambah-mahasiswa');
     Route::post('/simpan-mahasiswa', [MahasiswaController::class, 'store'])->name('simpan-mahasiswa');
+    Route::get('/edit-mahasiswa/{id}', [MahasiswaController::class, 'edit'])->name('edit-mahasiswa');
+    Route::post('/update-mahasiswa/{id}', [MahasiswaController::class, 'update'])->name('update-mahasiswa');
+    Route::get('/delete-mahasiswa/{id}', [MahasiswaController::class, 'destroy'])->name('delete-mahasiswa');
     
     // Pertemuan
     Route::get('/pertemuan', [PertemuanController::class, 'index'])->name('pertemuan');
