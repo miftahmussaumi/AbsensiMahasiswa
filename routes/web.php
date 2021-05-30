@@ -56,6 +56,7 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
 
     //KRS
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
+    Route::post('/simpan-mhs', [KrsController::class, 'store'])->name('simpan-mhs');
 
     //Import
     Route::get('/import', [ImportController::class, 'create']);

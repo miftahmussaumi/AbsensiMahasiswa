@@ -30,13 +30,13 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Kode Kelas</th>
-                                <th>Kode MatKul</th>
+                                <th style="width: 100px">Kode Kelas</th>
+                                <th style="width: 100px">Kode MatKul</th>
                                 <th>Nama MatKul</th>
-                                <th>Tahun</th>
-                                <th>Semester</th>
-                                <th>SKS</th>
-                                <th>#</th>
+                                <th style="width: 50px">Tahun</th>
+                                <th style="width: 40px">Semester</th>
+                                <th style="width: 40px">SKS</th>
+                                <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +48,11 @@
                                 <td>{{$data->tahun}} </td>
                                 <td>{{$data->semester}} </td>
                                 <td>{{$data->sks}} </td>
-                                <td><a href="#">#</a></td>
+                                <td>
+                                    <a href="#"><i class="fas fa-edit"></i></a>
+                                    |
+                                    <a href="#" onclick="return confirm('Apakah Yakin Hapus Data Kelas Ini?')"><i class="fas fa-trash-alt" style="color:orange"></i></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

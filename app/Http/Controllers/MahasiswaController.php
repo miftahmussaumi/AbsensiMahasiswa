@@ -38,13 +38,20 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        Mahasiswa::create([
-            'nama' => $request->nama,
-            'nim' => $request->nim,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
-        return redirect('mahasiswa')->with('message','Data Mahasiswa Berhasil Ditambahkan');
+        $nim = $request->nim;
+        $nim1 = DB::table('mahasiswa')->where('nim', '=', $nim)->get();
+        $jml = count(collect($nim1));
+        if ($jml > 0) {
+            return redirect('tambah-mahasiswa')->with('error', 'Nim sudah pernah diinputkan');
+        } else {
+            Mahasiswa::create([
+                'nama' => $request->nama,
+                'nim' => $request->nim,
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+            return redirect('mahasiswa')->with('success', 'Data Mahasiswa Berhasil Ditambahkan');
+        }
     }
 
     /**
@@ -125,6 +132,6 @@ class MahasiswaController extends Controller
     {
         $mhs = Mahasiswa::findorfail($id);
         $mhs->delete();
-        return back()->with('message','Data Mahasiswa Berhasil Dihapus');
+        return back()->with('delete','Data Mahasiswa Berhasil Dihapus');
     }
 }

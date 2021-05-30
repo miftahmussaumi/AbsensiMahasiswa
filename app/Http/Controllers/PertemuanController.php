@@ -43,13 +43,14 @@ class PertemuanController extends Controller
         // SELECT kelas.kode_kelas, pertemuan.pertemuan_ke FROM kelas JOIN pertemuan ON 
         // pertemuan.kelas_id=kelas.id WHERE kelas.kode_kelas='K001' AND pertemuan.pertemuan_ke='2'
         // $pert_ke = $request->pertemuan_ke;
-        $kls = DB::table('kelas')
+        $pert_ke = $request->pertemuan_ke;
+        $ke = DB::table('kelas')
         ->join('pertemuan','pertemuan.kelas_id','=','kelas.id')
-        ->where('kelas.id', '=', $id)
-        ->get('pertemuan.pertemuan_ke');
-        // echo "<pre>";
-        // print_r($kls);
-        $jml = count(collect($kls));
+        ->where('pertemuan.pertemuan_ke', '=', $pert_ke)
+        ->where('kelas.id','=',$id)
+        ->get();
+        
+        $jml = count(collect($ke));
         if ($jml > 0) {
             session()->flash('fail');
         } else {
