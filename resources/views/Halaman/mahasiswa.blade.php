@@ -21,11 +21,17 @@
                 <h5><i class="icon fas fa-trash-alt"></i> Succes</h5>
                 {{ session('delete') }}
             </div>
+            @elseif(session('edit'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Succes</h5>
+                {{ session('edit') }}
+            </div>
             @endif
             <div class="card">
                 <div class="card-body">
                     <a href="{{route('tambah-mahasiswa')}}">
-                        <input type="button" value="+ Mahasiswa" class="btn btn-danger">
+                        <input type="button" value="+ Mahasiswa" class="btn btn-success">
                     </a>
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
@@ -48,7 +54,7 @@
                             <td>
                                 <a href="{{ url('edit-mahasiswa',$data->id) }}"><i class="fas fa-edit"></i></a>
                                 |
-                                <a href="{{ url('delete-mahasiswa',$data->id) }}" onclick="return confirm('Apakah Yakin Hapus Data Mahasiswa Ini?')"><i class="fas fa-trash-alt" style="color:orange"></i></a>
+                                <a href="{{ url('delete-mahasiswa',$data->id) }}" onclick="return confirm('Apakah Yakin Hapus Data Mahasiswa Ini?')"><i class="fas fa-trash-alt" style="color:#dc3545"></i></a>
                             </td>
                         </tbody>
                         @endforeach

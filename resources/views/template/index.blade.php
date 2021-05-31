@@ -80,43 +80,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Menu
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
               @if (Str::length(Auth::guard('user')->user()) > 0)
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('home')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-home nav-icon"></i>
                     <p>Home</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('mahasiswa')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-users nav-icon"></i>
                     <p>Mahasiswa</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{{route('kelas')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-book-open nav-icon"></i>
                     <p>Kelas</p>
                   </a>
                 </li>
                 @elseif(Str::length(Auth::guard('mahasiswa')->user()) > 0)
                 <li class="nav-item">
                   <a href="{{url('mhs',Auth::guard('mahasiswa')->user()->id)}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-user-graduate nav-icon"></i>
                     <p>Halaman Mahasiswa</p>
                   </a>
                 </li>
                 @endif
                 <li class="nav-item">
                   <a href="{{route('logout')}}" class="nav-link">
+                    <i class="fas fa-sign-out-alt nav-icon"></i>
                     <p>Logout</p>
                   </a>
                 </li>

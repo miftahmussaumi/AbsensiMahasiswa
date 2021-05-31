@@ -41,9 +41,9 @@ class KrsController extends Controller
     {
         Krs::create([
             'kelas_id' => $request->kelas_id,
-            'mahasiswa_id'=> $request->nama_mhs
-            ]);
-            // dd($request->all());
+            'mahasiswa_id'=> $request->id_mhs
+        ]);
+        return redirect('kelas');
     }
 
     /**

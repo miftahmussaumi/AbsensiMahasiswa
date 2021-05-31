@@ -34,9 +34,9 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>Nim</th>
+                            <th style="width: 100px">Nim</th>
                             <th>Nama</th>
-                            <th>#</th>
+                            <th style="width: 30px">#</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,7 +44,9 @@
                         <tr>
                             <td>{{$mhs->nim}}</td>
                             <td>{{$mhs->nama}}</td>
-                            <td>tombol Hapus</td>
+                            <td>
+                                <a href="#" onclick="return confirm('Apakah Yakin Hapus Mahasiswa Ini?')"><i class="icon fas fa-trash-alt" style="color:#dc3545"></i></a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -54,7 +56,7 @@
             <div class="modal fade" id="modal-default">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="{{route ('simpan-mhs')}}" method="post">
+                        <form action="{{route('simpan-mhs')}}" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Kelas {{$kelas->kode_kelas}} </h4>
                                 <input type="text" hidden value="{{ $kelas->id }}" name="kelas_id">
@@ -63,16 +65,13 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <!-- select -->
-                                <div class="form-group">
-                                    <label>Tambah Mahasiswa</label>
-                                    <select class="form-control" name="nama_mhs">
-                                        <option disabled selected>- Pilih Mahasiswa -</option>
-                                        @foreach ($datamhs as $tb)
-                                        <option value="{{ $tb->id_mhs }}">{{$tb->nama_mhs}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <label>Tambah Mahasiswa</label>
+                                <select class="form-control" name="id_mhs">
+                                    <option disabled selected>- Pilih Mahasiswa -</option>
+                                    @foreach ($datamhs as $tb)
+                                    <option value="{{ $tb->id_mhs }}">{{$tb->nama_mhs}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

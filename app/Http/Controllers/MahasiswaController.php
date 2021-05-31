@@ -119,7 +119,7 @@ class MahasiswaController extends Controller
         $mhs = Mahasiswa::findorfail($id);
         $mhs->update($request->all());
 
-        return redirect('mahasiswa')->with('message','Data Mahasiswa Berhasil Diedit');
+        return redirect('mahasiswa')->with('edit','Data Mahasiswa Berhasil Diedit');
     }
 
     /**

@@ -5,7 +5,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KrsController;
-use App\Http\Controllers\ImportController;
+use App\Http\Controllers\AbsensiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
@@ -29,13 +29,14 @@ Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogi
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
+    // Tampilkan
     Route::get('/beranda', function () {
         return view('Halaman/beranda');
     })->name('home');
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
 
-    //Mahasiswa
+    // Mahasiswa
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/tambah-mahasiswa', [MahasiswaController::class, 'create'])->name('tambah-mahasiswa');
     Route::post('/simpan-mahasiswa', [MahasiswaController::class, 'store'])->name('simpan-mahasiswa');
@@ -50,17 +51,16 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::post('/simpan-pertemuan/{id}', [PertemuanController::class, 'store'])->name('simpan-pertemuan');
 
     // Kelas
-    Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
     Route::get('/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
     Route::post('/simpan-kelas', [KelasController::class, 'store'])->name('simpan-kelas');
 
-    //KRS
+    // KRS
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
     Route::post('/simpan-mhs', [KrsController::class, 'store'])->name('simpan-mhs');
 
-    //Import
-    Route::get('/import', [ImportController::class, 'create']);
-    Route::post('/save-import', [ImportController::class, 'store']);
+    // Import
+    Route::get('/import',[AbsensiController::class,'create'])->name('import');
+    Route::post('/save-import', [AbsensiController::class, 'store'])->name('save-import');
 
     //HalamanMahasiswa
     Route::get('/mhs/{mahasiswa_id}', [MahasiswaController::class, 'show']);

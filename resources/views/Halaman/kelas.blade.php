@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body">
                     <a href="{{route('tambah-kelas')}}">
-                        <input type="button" value="+ Kelas" class="btn btn-danger">
+                        <input type="button" value="+ Kelas" class="btn btn-success">
                     </a>
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
@@ -51,7 +51,7 @@
                                 <td>
                                     <a href="#"><i class="fas fa-edit"></i></a>
                                     |
-                                    <a href="#" onclick="return confirm('Apakah Yakin Hapus Data Kelas Ini?')"><i class="fas fa-trash-alt" style="color:orange"></i></a>
+                                    <a href="#" onclick="return confirm('Apakah Yakin Hapus Data Kelas Ini?')"><i class="fas fa-trash-alt" style="color:#dc3545"></i></a>
                                 </td>
                             </tr>
                             @endforeach
