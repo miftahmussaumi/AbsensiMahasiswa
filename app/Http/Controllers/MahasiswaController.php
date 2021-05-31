@@ -8,33 +8,17 @@ use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $dtMahasiswa = Mahasiswa::all();
         return view('Halaman.mahasiswa', compact('dtMahasiswa'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('Halaman.create.c-mahasiswa');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // dd($request->all());
@@ -54,18 +38,8 @@ class MahasiswaController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($mahasiswa_id)
     {
-        // echo "<pre>";
-        // print_r($mahasiswa_id);
-        // SELECT krs.id,kelas.kode_kelas,kelas.nama_matkul,mahasiswa.nama,mahasiswa.nim FROM krs RIGHT JOIN kelas 
-        // ON kelas.id=krs.kelas_id RIGHT JOIN mahasiswa ON mahasiswa.id=krs.mahasiswa_id WHERE mahasiswa.id='1'
 
         $mahasiswa = Mahasiswa::find($mahasiswa_id);
         $kelas = DB::table('krs')
@@ -95,25 +69,12 @@ class MahasiswaController extends Controller
         return view('Mahasiswa.detail-kls', compact('kelas'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $mhs = Mahasiswa::findorfail($id);
         return view('Halaman.edit.e-mahasiswa',compact('mhs'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $mhs = Mahasiswa::findorfail($id);
@@ -122,12 +83,6 @@ class MahasiswaController extends Controller
         return redirect('mahasiswa')->with('edit','Data Mahasiswa Berhasil Diedit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $mhs = Mahasiswa::findorfail($id);

@@ -9,49 +9,26 @@ use Illuminate\Support\Facades\DB;
 
 class PertemuanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // $pertemuan = Pertemuan::all();
-        // return view('Halaman.pertemuan');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('Halaman.create.c-pert');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     * @param  int  $id
-     */
     public function store(Request $request, $id)
     {
-        // dd($request->all());
-        // SELECT kelas.kode_kelas, pertemuan.pertemuan_ke FROM kelas JOIN pertemuan ON 
-        // pertemuan.kelas_id=kelas.id WHERE kelas.kode_kelas='K001' AND pertemuan.pertemuan_ke='2'
-        // $pert_ke = $request->pertemuan_ke;
         $pert_ke = $request->pertemuan_ke;
         $ke = DB::table('kelas')
         ->join('pertemuan','pertemuan.kelas_id','=','kelas.id')
         ->where('pertemuan.pertemuan_ke', '=', $pert_ke)
         ->where('kelas.id','=',$id)
         ->get();
-        
+
+        $tgl=$request->tanggal;
+        $year = date ('Y');
+        $tahun = substr($tgl, 0, 4);
+
         $jml = count(collect($ke));
-        if ($jml > 0) {
+        if ($jml > 0 && $tahun = $year) {
             session()->flash('fail');
         } else {
             Pertemuan::create ([
@@ -66,12 +43,6 @@ class PertemuanController extends Controller
         return view('Halaman.create.c-pert', compact('kelas_id'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $kelas_id = Kelas::find($id);
@@ -80,11 +51,6 @@ class PertemuanController extends Controller
 
     public function showDetail($id)
     {
-        // SELECT mahasiswa.nim,mahasiswa.nama,absensi.jam_masuk,absensi.jam_keluar,absensi.durasi, 
-        // kelas.kode_kelas,pertemuan.pertemuan_ke,pertemuan.tanggal FROM absensi RIGHT JOIN krs 
-        // ON krs.id=absensi.krs_id RIGHT JOIN pertemuan ON pertemuan.id=absensi.pertemuan_id RIGHT JOIN mahasiswa 
-        // ON mahasiswa.id=krs.mahasiswa_id RIGHT JOIN kelas ON kelas.id=krs.kelas_id WHERE pertemuan.pertemuan_ke='1'
-        
         $pert = DB::table('absensi')
         ->rightJoin('krs', 'krs.id', '=', 'absensi.krs_id')
         ->rightJoin('pertemuan', 'pertemuan.id', '=', 'absensi.pertemuan_id')
@@ -110,39 +76,5 @@ class PertemuanController extends Controller
         ]);
         
         return view('Halaman.pertemuan', compact('pert','kls')); 
-    }
-    
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
