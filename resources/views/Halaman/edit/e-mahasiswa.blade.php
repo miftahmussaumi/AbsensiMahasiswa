@@ -7,9 +7,7 @@
 
 @section('container')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
+        <div class="invoice p-3 mb-3">  
                 <div class="col-sm-4 invoice-col">
                     <form action="{{ url('update-mahasiswa',$mhs->id) }}" method="post">
                     {{csrf_field()}}
