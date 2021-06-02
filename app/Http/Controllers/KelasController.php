@@ -43,4 +43,26 @@ class KelasController extends Controller
         }
         return redirect('kelas');
     }
+    //edit
+    public function edit($id)
+    {
+        $kls = Kelas::findorfail($id);
+        return view('Halaman.edit.e-kelas', compact('kls'));
+    }
+
+    //update
+    public function update(Request $request, $id)
+    {
+        $kls = Kelas::findorfail($id);
+        $kls->update($request->all());
+        return redirect('kelas')->with('edit', 'Data Mahasiswa Berhasil Diedit');
+    }
+
+    //hapus
+    public function destroy($id)
+    {
+        $kls = Kelas::findorfail($id);
+        $kls->delete();
+        return back()->with('delete', 'Data Kelas Berhasil Dihapus');
+    }
 }

@@ -76,9 +76,6 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            @foreach($pert as $dt2)
-                            <b>Absensi ID : {{$dt->absensi_id}} </b>
-                            @endforeach
                         </div>
                         <div class="tab-pane" id="materi">
                             @foreach($kls as $dt2)
@@ -93,6 +90,11 @@
                                 {{csrf_field()}}
                                 <div class="card-body">
                                     <div class="form-group">
+                                        @foreach($pert as $pt)
+                                        <div class="input-group">
+                                            <input type="text" name="krs_id" value="{{ $pt->krs_id }}">
+                                        </div>
+                                        @endforeach
                                         <label>File Absensi .csv</label>
                                         <div class="input-group">
                                             <div class="custom-file">
@@ -100,11 +102,11 @@
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <button type="submit" class="btn btn-primary" id="submit" name="import">Import</button>
+                                        </div>
                                     </div>
-                                    <div class="input-group">
-                                        <button type="submit" class="btn btn-primary" id="submit" name="import">Import</button>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
