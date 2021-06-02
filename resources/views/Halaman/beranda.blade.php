@@ -23,14 +23,14 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$jml_mhs}}</h3>
 
                         <p>Mahasiswa</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('mahasiswa')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -38,14 +38,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{$jml_kls}}<sup style="font-size: 20px"></sup></h3>
 
                         <p>Kelas</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('kelas')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -53,7 +53,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{$jml_user}}</h3>
 
                         <p>User Registrations</p>
                     </div>
@@ -64,13 +64,16 @@
                 </div>
             </div>
             <div class="col-sm-12 invoice-col">
+                <br>
                 From
                 <address>
-                    <strong>Admin, Inc.</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                    Phone: (804) 123-5432<br>
-                    Email: info@almasaeedstudio.com
+                    <strong>Group Name : Fantastic Four</strong><br>
+                    Nama Anggota Kelompok :<br>
+                    1. Miftah Mussaumi Adi - 1911522009<br>
+                    2. Lailarahmatul Aufa W.P - 1911522013<br>
+                    3. M.Ravy Octa Nugraha - 1911523007 <br>
+                    4. Fathia Rahma Nazhifa - 1911523013 <br>
+                    <!-- 5. M.Kevin Beslia - 1911523007 -->
                 </address>
             </div>
         </div>

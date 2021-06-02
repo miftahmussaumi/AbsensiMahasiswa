@@ -83,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               @if (Str::length(Auth::guard('user')->user()) > 0)
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{route('home')}}" class="nav-link">
+                  <a href="{{route('dashboard')}}" class="nav-link">
                     <i class="fas fa-home nav-icon"></i>
                     <p>Home</p>
                   </a>

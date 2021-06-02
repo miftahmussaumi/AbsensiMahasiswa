@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KrsController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     // Tampilkan
-    Route::get('/beranda', function () {
-        return view('Halaman/beranda');
-    })->name('home');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard-mhs', [HomeController::class, 'indexmhs'])->name('dashboard-mhs');
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
 
@@ -68,7 +67,7 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::post('/save-import', [AbsensiController::class, 'store'])->name('save-import');
 
     //HalamanMahasiswa
-    Route::get('/mhs/{mahasiswa_id}', [MahasiswaController::class, 'show']);
+    Route::get('/mhs/{mahasiswa_id}', [MahasiswaController::class, 'show'])->name('mhs');
     //DetailKelasMahasiswa
     Route::get('/detail-kelas/{krs_id}', [MahasiswaController::class, 'showDetail'])->name('detail-kelas');
 

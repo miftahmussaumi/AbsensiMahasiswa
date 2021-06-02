@@ -11,10 +11,10 @@ class LoginController extends Controller
 {
     public function postlogin (Request $request){
         if (Auth::guard('mahasiswa')->attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect('/beranda');
+            return redirect('/dashboard-mhs');
         }
         else if(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect('/beranda');
+            return redirect('/dashboard');
         }
         return redirect ('/');
     }

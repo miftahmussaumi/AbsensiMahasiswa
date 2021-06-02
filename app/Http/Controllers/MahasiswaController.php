@@ -54,19 +54,21 @@ class MahasiswaController extends Controller
 
     public function showDetail($krs_id)
     {
-        $kelas = DB::table('krs')
-            ->rightJoin('absensi', 'absensi.krs_id', '=', 'krs.id')
+        $kode = DB :: table ('krs')
+        ->join('kelas','kelas.id', '=', 'krs.kelas_id')
+        ->where('krs.id', '=', $krs_id)
+        ->get(['kelas.kode_kelas','kelas.id','kelas.nama_matkul', 'kelas.semester',
+                'kelas.tahun', 'kelas.sks' ]);
+
+        $kelas = DB::table('absensi')
+            ->rightJoin('krs', 'absensi.krs_id', '=', 'krs.id')
             ->rightJoin('kelas', 'kelas.id', '=', 'krs.kelas_id')
             ->rightJoin('pertemuan', 'absensi.pertemuan_id', '=', 'pertemuan.id')
             ->where('krs.id', '=', $krs_id)
             ->get([
-                'kelas.id', 'kelas.kode_kelas',
-                'kelas.nama_matkul',
-                'kelas.kode_matkul', 'kelas.semester',
-                'kelas.tahun', 'kelas.sks', 'pertemuan.pertemuan_ke',
-                'absensi.jam_masuk', 'absensi.jam_keluar', 'absensi.durasi',
+                'pertemuan.pertemuan_ke'
             ]);
-        return view('Mahasiswa.detail-kls', compact('kelas'));
+        return view('Mahasiswa.detail-kls', compact('kelas','kode'));
     }
 
     public function edit($id)

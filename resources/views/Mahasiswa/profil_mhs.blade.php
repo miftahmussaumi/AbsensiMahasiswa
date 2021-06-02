@@ -50,7 +50,7 @@
                         <tr>
                             <td>{{$no++}}</td>
                             <td>{{$kls->kode_kelas}}</td>
-                            <td><a href="{{ url('detail-kelas',$kls->krs_id) }}">Detail</a></td>
+                            <td><a href="{{ url('detail-kelas',$kls->krs_id }}">Detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>
