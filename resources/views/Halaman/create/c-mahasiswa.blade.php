@@ -20,19 +20,31 @@
                 {{csrf_field()}}
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Mahasiswa" required>
+                    <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama Mahasiswa" value="{{@old('nama')}}">
+                    @error('nama')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>NIM</label>
-                    <input type="text" id="nim" name="nim" class="form-control" placeholder="NIM Mahasiswa" required>
+                    <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" placeholder="NIM Mahasiswa" value="{{@old('nim')}}">
+                    @error('nim')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email Mahasiswa" required>
+                    <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Mahasiswa" value="{{@old('email')}}">
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password Mahasiswa" maxlength="8" required>
+                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Mahasiswa" maxlength="8" value="{{@old('password')}}">
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <a href="{{url('mahasiswa')}}" class="btn btn-primary"><- Back</a>
