@@ -33,6 +33,7 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     Route::get('/beranda', function () {
         return view('Halaman/beranda');
     })->name('home');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
 
