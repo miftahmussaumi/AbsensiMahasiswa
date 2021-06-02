@@ -7,6 +7,19 @@
 
 @section('container')
 <div class="container-fluid">
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i> Success</h5>
+        {{ session('success') }}
+    </div>
+    @elseif(session('delete'))
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-trash-alt"></i> Success!</h5>
+        {{session('delete')}}
+    </div>
+    @endif
     <div class="invoice p-3 mb-3">
         <div class="row invoice-info">
             <div class="col-sm-5 invoice-col">
@@ -45,7 +58,7 @@
                             <td>{{$mhs->nim}}</td>
                             <td>{{$mhs->nama}}</td>
                             <td>
-                                <a href="#" onclick="return confirm('Apakah Yakin Hapus Mahasiswa Ini?')"><i class="icon fas fa-trash-alt" style="color:#dc3545"></i></a>
+                                <a href="{{ url('delete-mhs',$mhs->krs_id) }}" onclick="return confirm('Apakah Yakin Menghapus Mahasiswa Ini?')"><i class="icon fas fa-trash-alt" style="color:#dc3545"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -57,8 +70,9 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form action="{{route('simpan-mhs')}}" method="post">
+                            {{csrf_field()}}
                             <div class="modal-header">
-                                <h4 class="modal-title">Kelas {{$kelas->kode_kelas}} </h4>
+                                <h4 class="modal-title">Kelas {{$kelas->id}} </h4>
                                 <input type="text" hidden value="{{ $kelas->id }}" name="kelas_id">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>

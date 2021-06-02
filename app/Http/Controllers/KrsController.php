@@ -19,11 +19,12 @@ class KrsController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         Krs::create([
             'kelas_id' => $request->kelas_id,
             'mahasiswa_id'=> $request->id_mhs
         ]);
-        return redirect('kelas');
+        return back()->with('success', 'Mahasiswa berhasil ditambahkan !');
     }
 
 
@@ -47,7 +48,7 @@ class KrsController extends Controller
         ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
         ->where('kelas.id', '=', $id)
         ->get([
-            'mahasiswa.id AS mahasiswa_id','mahasiswa.nim','mahasiswa.nama'
+            'mahasiswa.id AS mahasiswa_id','mahasiswa.nim','mahasiswa.nama','krs.id AS krs_id'
         ]);
 
         foreach ($krs as $krs2) {
@@ -59,5 +60,12 @@ class KrsController extends Controller
         ->get(['mahasiswa.nama AS nama_mhs', 'mahasiswa.id AS id_mhs']);
         
         return view('Halaman.krs',compact('krs','kelas','pert','datamhs'));   
+    }
+
+    public function destroy($krs_id)
+    {
+        $krs = Krs::findorfail($krs_id);
+        $krs->delete();
+        return back()->with('delete', 'Mahasiswa Berhasil Dihapus');
     }
 }

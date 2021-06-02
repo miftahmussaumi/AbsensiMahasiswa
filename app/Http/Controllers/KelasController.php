@@ -9,19 +9,20 @@ use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller
 {
-    
+
     public function index()
     {
         $dtKelas = Kelas::all();
         return view('Halaman.kelas',compact('dtKelas')); 
     }
 
-   
+   //tambah
     public function create()
     {
         return view('Halaman.create.c-kelas');
     }
 
+    //simpan
     public function store(Request $request)
     {
         $kelas_kode = $request->kode_kelas;
@@ -47,7 +48,7 @@ class KelasController extends Controller
     public function edit($id)
     {
         $kls = Kelas::findorfail($id);
-        return view('Halaman.edit.e-kelas', compact('kls'));
+        return view('Halaman.edit.e-kelas',compact('kls'));
     }
 
     //update
@@ -55,7 +56,7 @@ class KelasController extends Controller
     {
         $kls = Kelas::findorfail($id);
         $kls->update($request->all());
-        return redirect('kelas')->with('edit', 'Data Mahasiswa Berhasil Diedit');
+        return redirect('kelas')->with('edit','Data Mahasiswa Berhasil Diedit');
     }
 
     //hapus

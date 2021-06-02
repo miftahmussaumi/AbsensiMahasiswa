@@ -53,10 +53,14 @@ Route::group(['middleware'=>['auth:user,mahasiswa']], function(){
     // Kelas
     Route::get('/tambah-kelas', [KelasController::class, 'create'])->name('tambah-kelas');
     Route::post('/simpan-kelas', [KelasController::class, 'store'])->name('simpan-kelas');
+    Route::get('/edit-kelas/{id}', [KelasController::class, 'edit'])->name('edit-kelas');
+    Route::post('/update-kelas/{id}', [KelasController::class, 'update'])->name('update-kelas');
+    Route::get('/delete-kelas/{id}', [KelasController::class, 'destroy'])->name('delete-kelas');
 
     // KRS
     Route::get('/detail/{id}', [KrsController::class, 'show'])->name('detail');
     Route::post('/simpan-mhs', [KrsController::class, 'store'])->name('simpan-mhs');
+    Route::get('/delete-mhs/{krs_id}', [KrsController::class, 'destroy'])->name('delete-mhs');
 
     // Import
     Route::get('/import',[AbsensiController::class,'create'])->name('import');
