@@ -42,7 +42,10 @@ class KrsController extends Controller
         ->orderBy('pertemuan.pertemuan_ke')
         ->get([
             'pertemuan.pertemuan_ke','pertemuan.id AS pertemuan_id','kelas.id AS kelas_id']);
-
+        // SELECT absensi.jam_masuk, absensi.jam_keluar, mahasiswa.nama, kelas.kode_kelas, 
+        // pertemuan.pertemuan_ke, krs.id FROM absensi JOIN pertemuan ON 
+        // pertemuan.id=absensi.pertemuan_id JOIN krs ON krs.id=absensi.krs_id JOIN mahasiswa 
+        // ON mahasiswa.id=krs.mahasiswa_id JOIN kelas ON kelas.id=krs.kelas_id WHERE krs.id='2'
         $krs = DB::table('kelas')
         ->join('krs', 'krs.kelas_id', '=', 'kelas.id')
         ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
@@ -51,15 +54,20 @@ class KrsController extends Controller
             'mahasiswa.id AS mahasiswa_id','mahasiswa.nim','mahasiswa.nama','krs.id AS krs_id'
         ]);
 
-        foreach ($krs as $krs2) {
-            $data[] = $krs2->mahasiswa_id;
-        }
-        
-        $datamhs = DB::table('mahasiswa')
-        ->whereNotIn('mahasiswa.id',$data)
-        ->get(['mahasiswa.nama AS nama_mhs', 'mahasiswa.id AS id_mhs']);
-        
-        return view('Halaman.krs',compact('krs','kelas','pert','datamhs'));   
+        $jml = count(collect($krs));
+        if($jml >  0) {
+            foreach ($krs as $krs2) {
+                $data[] = $krs2->mahasiswa_id;
+            }
+            $datamhs = DB::table('mahasiswa')
+            ->whereNotIn('mahasiswa.id',$data)
+            ->get(['mahasiswa.nama AS nama_mhs', 'mahasiswa.id AS id_mhs']);
+            return view('Halaman.krs', compact('krs', 'kelas', 'pert', 'datamhs'));  
+        } else {
+            $datamhs = DB::table('mahasiswa')
+                ->get(['mahasiswa.nama AS nama_mhs', 'mahasiswa.id AS id_mhs']);
+            return view('Halaman.krs', compact('krs', 'kelas', 'pert', 'datamhs'));  
+        } 
     }
 
     public function destroy($krs_id)

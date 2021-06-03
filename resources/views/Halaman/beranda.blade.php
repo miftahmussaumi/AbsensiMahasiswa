@@ -19,8 +19,9 @@
                     <img src="{{asset('img/unand.png')}}" width="150">
                 </div>
             </div>
+            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
+                <!-- small card -->
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{$jml_mhs}}</h3>
@@ -28,14 +29,15 @@
                         <p>Mahasiswa</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fas fa-user-graduate"></i></i>
                     </div>
-                    <a href="{{route('mahasiswa')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('mahasiswa')}}" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
+                <!-- small card -->
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{$jml_kls}}<sup style="font-size: 20px"></sup></h3>
@@ -43,24 +45,27 @@
                         <p>Kelas</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fas fa-school"></i>
                     </div>
-                    <a href="{{route('kelas')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('kelas')}}" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
+                <!-- small card -->
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>{{$jml_user}}</h3>
 
-                        <p>User Registrations</p>
+                        <p>User</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="fas fa-user-plus"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-sm-12 invoice-col">
@@ -73,7 +78,7 @@
                     2. Lailarahmatul Aufa W.P - 1911522013<br>
                     3. M.Ravy Octa Nugraha - 1911523007 <br>
                     4. Fathia Rahma Nazhifa - 1911523013 <br>
-                    <!-- 5. M.Kevin Beslia - 1911523007 -->
+                    5. M.Kevin Beslia - 1911523009
                 </address>
             </div>
         </div>

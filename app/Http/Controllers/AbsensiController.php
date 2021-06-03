@@ -51,6 +51,7 @@ class AbsensiController extends Controller
                     }
                     $i++;
                 }
+                
                 // $jml = strlen ($data[0][0]);
                 // $cek=DB::table('krs')
                 // ->join('mahasiswa', 'mahasiswa.id','=','krs.mahasiswa_id')
@@ -67,46 +68,49 @@ class AbsensiController extends Controller
                 //         ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
                 //         ->join('kelas', 'kelas.id', '=', 'krs.kelas_id')
                 //         ->where('kelas.kode_kelas', '=', 'K001')
-                //         ->where('mahasiswa.nim', '=', $data[0])
-                //         ->get();
-                //     $jml = count($cek);
-                //     if ($jml > 0) {
-                //         // dd($data[0]);
-                //         // Absensi::create([
-                //         //     'krs_id' => 1,
-                //         //     'pertemuan_id' => 2,
-                //         //     'jam_masuk' => $dt[1][1],
-                //         //     'jam_keluar' => $dt[2][1],
-                //         //     'durasi' => $dt[4]
-                //         // ]);
-                //         // return redirect('kelas');
-                //     }
+                //         ->get(['mahasiswa.nim']);
+                //     $b=0;
+                    
+                //     // $jml = count($cek);
+                //     // if ($jml > 0) {
+                //     //     // dd($data[0]);
+                //     //     // Absensi::create([
+                //     //     //     'krs_id' => 1,
+                //     //     //     'pertemuan_id' => 2,
+                //     //     //     'jam_masuk' => $dt[1][1],
+                //     //     //     'jam_keluar' => $dt[2][1],
+                //     //     //     'durasi' => $dt[4]
+                //     //     // ]);
+                //     //     // return redirect('kelas');
+                //     // }
                 // }
+                echo "<pre>";
+                dd($data);
                 
-                foreach ($data as $dt) {
-                    $cek = DB::table('krs')
-                    ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
-                    ->join('kelas', 'kelas.id', '=', 'krs.kelas_id')
-                    ->where('kelas.kode_kelas', '=', 'K001')
-                    ->where('mahasiswa.nim','=',$dt[0])
-                    ->get('krs.id AS krs_id');
-                    $jml = count ($cek);
-                    // print($jml);
-                    // if($jml > 0){
-                        // var_dump($dt[0]);
-                        // var_dump($dt[5]);
-                        // foreach ($cek as $c) {
-                        //     Absensi::create([
-                        //         'krs_id' => $c->krs_id,
-                        //         'pertemuan_id' => 2,
-                        //         'jam_masuk' => strtotime($dt[1][1]),
-                        //         'jam_keluar' => strtotime($dt[2][1]),
-                        //         'durasi' => $dt[4]
-                        //     ]);
-                        //     return redirect('kelas');
-                        // }
-                    // }
-                }
+                // foreach ($data as $dt) {
+                //     $cek = DB::table('krs')
+                //     ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
+                //     ->join('kelas', 'kelas.id', '=', 'krs.kelas_id')
+                //     ->where('kelas.kode_kelas', '=', 'K001')
+                //     ->where('mahasiswa.nim','=',$dt[0])
+                //     ->get('krs.id AS krs_id');
+                //     $jml = count ($cek);
+                //     // print($jml);
+                //     // if($jml > 0){
+                //         // var_dump($dt[0]);
+                //         // var_dump($dt[5]);
+                //         // foreach ($cek as $c) {
+                //         //     Absensi::create([
+                //         //         'krs_id' => $c->krs_id,
+                //         //         'pertemuan_id' => 2,
+                //         //         'jam_masuk' => strtotime($dt[1][1]),
+                //         //         'jam_keluar' => strtotime($dt[2][1]),
+                //         //         'durasi' => $dt[4]
+                //         //     ]);
+                //         //     return redirect('kelas');
+                //         // }
+                //     // }
+                // }
                 // for ($a=0 ; $a<$check ; $a++){
                 //     foreach($data as $dt){
                 //         if($dt[0]==$db[$a]){
@@ -130,8 +134,7 @@ class AbsensiController extends Controller
                 //         print($dt[0]);
                 //     }
                 // }
-                // echo "<pre>";
-                // dd($data);
+                
             }
         }
     }

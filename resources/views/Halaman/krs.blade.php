@@ -69,6 +69,7 @@
             <div class="modal fade" id="modal-default">
                 <div class="modal-dialog">
                     <div class="modal-content">
+                    
                         <form action="{{route('simpan-mhs')}}" method="post">
                             {{csrf_field()}}
                             <div class="modal-header">
@@ -94,6 +95,7 @@
                             </div>
                         </form>
                     </div>
+                    
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->

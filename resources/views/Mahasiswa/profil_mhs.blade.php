@@ -33,7 +33,7 @@
             <div class="col-sm-1 invoice-col">
             </div>
             <div class="col-sm-5 invoice-col">
-                <h4 style="text-align: center;">Daftar Kelas</h4>
+                <h4 style="text-align: center">Daftar Kelas</h4>
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
@@ -50,7 +50,7 @@
                         <tr>
                             <td>{{$no++}}</td>
                             <td>{{$kls->kode_kelas}}</td>
-                            <td><a href="{{ url('detail-kelas',$kls->krs_id }}">Detail</a></td>
+                            <td><a href="{{ url('detail-kelas', $kls->krs_id) }}">Detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>

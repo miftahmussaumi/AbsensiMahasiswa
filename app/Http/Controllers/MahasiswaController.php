@@ -22,23 +22,6 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $validation = $request->validate([
-            'nama' => 'required',
-            'nim' => 'required|integer',
-            'email' => 'required|email',
-            'password' => 'required|integer'
-        ],
-        [
-            'nama.required' => 'Nama Tidak Boleh Kosong',
-            'nim.required' => 'NIM Tidak Boleh Kosong',
-            'nim.integer' => 'NIM Hanya Boleh Angka',
-            'email.required' => 'Email Tidak Boleh Kosong',
-            'email.email' => 'Email Tidak Valid',
-            'password.required' => 'Password Tidak Boleh Kosong',
-            'password.integer' => 'Password Hanya Boleh Angka'
-
-        ]
-        );
         $nim = $request->nim;
         $nim1 = DB::table('mahasiswa')->where('nim', '=', $nim)->get();
         $jml = count(collect($nim1));
@@ -76,16 +59,23 @@ class MahasiswaController extends Controller
         ->where('krs.id', '=', $krs_id)
         ->get(['kelas.kode_kelas','kelas.id','kelas.nama_matkul', 'kelas.semester',
                 'kelas.tahun', 'kelas.sks' ]);
+        foreach ($kode as $kode1) {
+            $data[] = $kode1->kode_kelas;
+        }
+        $pert = DB :: table('pertemuan')
+        ->join('kelas','pertemuan.kelas_id','=','kelas.id')
+        ->where('kelas.kode_kelas','=',$data)
+        ->orderBy('pertemuan.pertemuan_ke')
+        ->get(['pertemuan.pertemuan_ke']);
 
-        $kelas = DB::table('absensi')
-            ->rightJoin('krs', 'absensi.krs_id', '=', 'krs.id')
-            ->rightJoin('kelas', 'kelas.id', '=', 'krs.kelas_id')
-            ->rightJoin('pertemuan', 'absensi.pertemuan_id', '=', 'pertemuan.id')
-            ->where('krs.id', '=', $krs_id)
-            ->get([
-                'pertemuan.pertemuan_ke'
-            ]);
-        return view('Mahasiswa.detail-kls', compact('kelas','kode'));
+        // $kelas = DB::table('absensi')
+        // ->rightJoin('krs', 'absensi.krs_id', '=', 'krs.id')
+        // ->rightJoin('kelas', 'kelas.id', '=', 'krs.kelas_id')
+        // ->rightJoin('pertemuan', 'absensi.pertemuan_id', '=', 'pertemuan.id')
+        // ->where('krs.id', '=', $krs_id)
+        // ->get(['pertemuan.pertemuan_ke']);
+    dd($pert);
+        return view('Mahasiswa.detail-kls', compact('pert','kode'));
     }
 
     public function edit($id)
@@ -96,23 +86,6 @@ class MahasiswaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validation = $request->validate([
-            'nama' => 'required',
-            'nim' => 'required|integer',
-            'email' => 'required|email',
-            'password' => 'required|integer'
-        ],
-        [
-            'nama.required' => 'Nama Tidak Boleh Kosong',
-            'nim.required' => 'NIM Tidak Boleh Kosong',
-            'nim.integer' => 'NIM Hanya Boleh Angka',
-            'email.required' => 'Email Tidak Boleh Kosong',
-            'email.email' => 'Email Tidak Valid',
-            'password.required' => 'Password Tidak Boleh Kosong',
-            'password.integer' => 'Password Hanya Boleh Angka'
-
-        ]
-        );
         $mhs = Mahasiswa::findorfail($id);
         $mhs->update($request->all());
 

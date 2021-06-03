@@ -63,7 +63,7 @@ class PertemuanController extends Controller
             'kelas.tahun','kelas.semester','kelas.sks','pertemuan.pertemuan_ke', 
             'pertemuan.id AS pertemuan_id', 'pertemuan.tanggal', 'absensi.id AS absensi_id',
             'pertemuan.materi', 'kelas.id AS kelas_id', 'krs.id AS krs_id'
-            ]);
+            ]); 
 
         $kls = DB::table('kelas')
         ->rightJoin('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')

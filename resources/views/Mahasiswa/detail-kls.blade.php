@@ -31,20 +31,17 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>Daftar Pertemuan</th>
-                            <th>Status</th>
+                            <th width="100">Pertemuan ke-</th>
+                            <th width="100">Status</th>
                         </tr>
                     </thead>
-                    <?php
-                    $no = 1;
-                    ?>
                     <tbody>
-
+                    @foreach($pert as $pt)
                         <tr>
-                            <td></td>
+                            <td>{{$pt->pertemuan_ke}}</td>
                             <td></td>
                         </tr>
-
+                    @endforeach
                     </tbody>
                 </table>
             </div>
