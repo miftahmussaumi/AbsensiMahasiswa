@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label>NIM</label>
-                            <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" placeholder="NIM Mahasiswa" value="{{ old('nim', $mhs->nim) }}">
+                            <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" placeholder="NIM Mahasiswa" readonly value="{{ old('nim', $mhs->nim) }}">
                             @error('nim')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

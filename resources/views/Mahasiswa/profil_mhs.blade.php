@@ -39,7 +39,7 @@
                         <tr>
                             <th>No</th>
                             <th>Kode Kelas</th>
-                            <th>#</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <?php

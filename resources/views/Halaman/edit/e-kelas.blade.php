@@ -15,7 +15,7 @@
                     {{csrf_field()}}
                         <div class="form-group">
                             <label>Kode Kelas</label>
-                            <input type="text" id="kode_kelas" name="kode_kelas" class="form-control" placeholder="Kode Kelas" value="{{ $kls->kode_kelas }}" required>
+                            <input type="text" id="kode_kelas" name="kode_kelas" class="form-control" placeholder="Kode Kelas" readonly value="{{ $kls->kode_kelas }}" required>
                         </div>
                         <div class="form-group">
                             <label>Kode Matkul</label>
