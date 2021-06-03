@@ -36,21 +36,17 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <!-- <th style="width: 5px">No</th> -->
                                 <th>NIM</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <!-- <th>Password</th> -->
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
                         @foreach ($dtMahasiswa as $data)
                         <tbody>
-                            <!-- <td>{{ $loop->iteration }}</td> -->
                             <td>{{ $data->nim }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->email }}</td>
-                            <!-- <td>{{ $data->password }}</td> -->
                             <td>
                                 <a href="{{ url('edit-mahasiswa',$data->id) }}"><i class="fas fa-edit"></i></a>
                                 |

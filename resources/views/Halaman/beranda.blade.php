@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="callout callout-info">
         <h2><i class="fas fa-door-open"></i> Selamat Datang </h2>
-        Selamat Bekerja ! Website ini digunakan untuk mendata atau merekap data kelas, mahasiswa dan absensi
+        Website ini digunakan untuk mengelola rekapitulasi absensi mahasiswa. Selamat Bekerja ! 
     </div>
     <div class="invoice p-3 mb-3">
         <div class="row invoice-info">
@@ -52,33 +52,18 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-6">
-                <!-- small card -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{$jml_user}}</h3>
-
-                        <p>User</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
+            <!-- ./col -->
             <div class="col-sm-12 invoice-col">
                 <br>
                 From
                 <address>
-                    <strong>Group Name : Fantastic Four</strong><br>
-                    Nama Anggota Kelompok :<br>
-                    1. Miftah Mussaumi Adi - 1911522009<br>
-                    2. Lailarahmatul Aufa W.P - 1911522013<br>
-                    3. M.Ravy Octa Nugraha - 1911523007 <br>
-                    4. Fathia Rahma Nazhifa - 1911523013 <br>
-                    5. M.Kevin Beslia - 1911523009
+                    <strong>Nama Kelompok : Fantastic Four</strong><br>
+                    Anggota Kelompok :<br>
+                    1. Miftah Mussaumi Adi              - 1911522009<br>
+                    2. Laila Rahmatul Aufa Welza Putri  - 1911522013<br>
+                    3. M.Rafvy Octa Nugraha             - 1911523007 <br>
+                    4. Fathia Rahma Nazhifa             - 1911523013 <br>
+                    5. M.Kevin Beslia                   - 1911523009
                 </address>
             </div>
         </div>

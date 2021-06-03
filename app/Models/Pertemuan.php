@@ -14,8 +14,4 @@ class Pertemuan extends Model
         'id','kelas_id','pertemuan_ke','tanggal','materi'
     ];
 
-    // public function kelas()
-    // {
-    //     return $this->belongsTo(Kelas::class);
-    // }
 }
