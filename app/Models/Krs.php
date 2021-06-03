@@ -12,17 +12,4 @@ class Krs extends Model
     use HasFactory;
     protected $fillable = ['id', 'kelas_id', 'mahasiswa_id'];
 
-    // public function kelas()
-    // {
-    //     return $this->belongsTo(Kelas::class);
-    // }
-
-    // public function mahasiswa()
-    // {
-    //     return $this->belongsTo(Mahasiswa::class);
-    // }
-    
-    public function allData(){
-        
-    }
 }

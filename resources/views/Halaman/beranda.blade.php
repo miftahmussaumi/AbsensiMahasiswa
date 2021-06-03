@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="callout callout-info">
         <h2><i class="fas fa-door-open"></i> Selamat Datang </h2>
-        Website ini digunakan untuk mendata atau merekap data kelas, mahasiswa dan absensi. Selamat Bekerja ! 
+        Website ini digunakan untuk mengelola rekapitulasi absensi mahasiswa. Selamat Bekerja ! 
     </div>
     <div class="invoice p-3 mb-3">
         <div class="row invoice-info">
@@ -67,8 +67,8 @@
                 <br>
                 From
                 <address>
-                    <strong>Group Name : Fantastic Four</strong><br>
-                    Nama Anggota Kelompok :<br>
+                    <strong>Nama Kelompok : Fantastic Four</strong><br>
+                    Anggota Kelompok :<br>
                     1. Miftah Mussaumi Adi              - 1911522009<br>
                     2. Laila Rahmatul Aufa Welza Putri  - 1911522013<br>
                     3. M.Ravy Octa Nugraha              - 1911523007 <br>

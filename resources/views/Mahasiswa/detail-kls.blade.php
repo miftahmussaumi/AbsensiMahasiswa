@@ -38,14 +38,6 @@
                     <?php
                     $no = 1;
                     ?>
-                    <tbody>
-
-                        <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                    </tbody>
                 </table>
             </div>
         </div>
