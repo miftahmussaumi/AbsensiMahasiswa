@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="callout callout-info">
         <h2><i class="fas fa-door-open"></i> Selamat Datang </h2>
-        Selamat Datang ! Website ini digunakan untuk melihat rekap Absensi mahasiswa bersangkutan
+        Website ini digunakan untuk mengelola rekapitulasi Absensi mahasiswa.
     </div>
     <div class="invoice p-3 mb-3">
         <div class="row invoice-info">
