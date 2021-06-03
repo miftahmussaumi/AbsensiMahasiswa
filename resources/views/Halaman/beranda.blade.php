@@ -57,7 +57,7 @@
                     Anggota Kelompok :<br>
                     1. Miftah Mussaumi Adi              - 1911522009<br>
                     2. Laila Rahmatul Aufa Welza Putri  - 1911522013<br>
-                    3. M.Ravy Octa Nugraha              - 1911523007 <br>
+                    3. M.Rafvy Octa Nugraha             - 1911523007 <br>
                     4. Fathia Rahma Nazhifa             - 1911523013 <br>
                     <!-- 5. M.Kevin Beslia              - 1911523007 -->
                 </address>
