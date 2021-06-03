@@ -35,7 +35,6 @@
                             <th width="100">Status</th>
                         </tr>
                     </thead>
-<<<<<<< HEAD
                     <tbody>
                     @foreach($pert as $pt)
                         <tr>
@@ -44,11 +43,6 @@
                         </tr>
                     @endforeach
                     </tbody>
-=======
-                    <?php
-                    $no = 1;
-                    ?>
->>>>>>> 0c4135065a085d176a1ffdb90c46a75f4d9efa4b
                 </table>
             </div>
         </div>
