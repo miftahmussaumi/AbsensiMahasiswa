@@ -22,6 +22,23 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $validation = $request->validate([
+            'nama' => 'required',
+            'nim' => 'required|integer',
+            'email' => 'required|email',
+            'password' => 'required|integer'
+        ],
+        [
+            'nama.required' => 'Nama Tidak Boleh Kosong',
+            'nim.required' => 'NIM Tidak Boleh Kosong',
+            'nim.integer' => 'NIM Hanya Boleh Angka',
+            'email.required' => 'Email Tidak Boleh Kosong',
+            'email.email' => 'Email Tidak Valid',
+            'password.required' => 'Password Tidak Boleh Kosong',
+            'password.integer' => 'Password Hanya Boleh Angka'
+
+        ]
+        );
         $nim = $request->nim;
         $nim1 = DB::table('mahasiswa')->where('nim', '=', $nim)->get();
         $jml = count(collect($nim1));
@@ -86,6 +103,23 @@ class MahasiswaController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validation = $request->validate([
+            'nama' => 'required',
+            'nim' => 'required|integer',
+            'email' => 'required|email',
+            'password' => 'required|integer'
+        ],
+        [
+            'nama.required' => 'Nama Tidak Boleh Kosong',
+            'nim.required' => 'NIM Tidak Boleh Kosong',
+            'nim.integer' => 'NIM Hanya Boleh Angka',
+            'email.required' => 'Email Tidak Boleh Kosong',
+            'email.email' => 'Email Tidak Valid',
+            'password.required' => 'Password Tidak Boleh Kosong',
+            'password.integer' => 'Password Hanya Boleh Angka'
+
+        ]
+        );
         $mhs = Mahasiswa::findorfail($id);
         $mhs->update($request->all());
 
