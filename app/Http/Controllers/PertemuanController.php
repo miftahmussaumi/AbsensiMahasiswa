@@ -23,12 +23,8 @@ class PertemuanController extends Controller
         ->where('kelas.id','=',$id)
         ->get();
 
-        $tgl=$request->tanggal;
-        $year = date ('Y');
-        $tahun = substr($tgl, 0, 4);
-
         $jml = count(collect($ke));
-        if ($jml > 0 && $tahun = $year) {
+        if ($jml > 0) {
             session()->flash('fail');
         } else {
             Pertemuan::create ([
@@ -37,7 +33,7 @@ class PertemuanController extends Controller
                 'tanggal' => $request->tanggal,
                 'materi' => $request->materi
             ]);
-            session()->flash('success');
+            session()->flash('berhasil');
         }
         $kelas_id = Kelas::find($id);
         return view('Halaman.create.c-pert', compact('kelas_id'));

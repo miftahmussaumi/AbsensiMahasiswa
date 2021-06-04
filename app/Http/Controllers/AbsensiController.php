@@ -15,7 +15,7 @@ class AbsensiController extends Controller
             $ekstensiFile = explode('.', $namaFile);
             $ekstensiFile = strtolower(end($ekstensiFile));
             if ($ekstensiFile != $ekstensiValid) {
-                print("salah");
+                return back()->with('error', 'Jenis file import tidak sesuai. Pastikan upload file dengan jenis ".csv" !');
             } else {
                 $file = fopen($fileName, "r");
                 $skipLines = 7;
@@ -64,7 +64,6 @@ class AbsensiController extends Controller
                     ->get('krs.id AS krs_id');
                     $jml = count ($cek);
 
-                    // $durasi = (strtotime($dt[2][1]) - strtotime($dt[1][1])) / 60;
                     if($jml > 0){
                         foreach ($cek as $c) {
                             Absensi::create([
@@ -74,11 +73,10 @@ class AbsensiController extends Controller
                                 'jam_keluar' => $dt[2][1],
                                 'durasi' => $dt[4]
                             ]);
-                            // return redirect('kelas');
                         }
                     }
                 }
-                return redirect()->back();
+                return back()->with('import', 'Data berhasil diimport!');
             }
         }
     }

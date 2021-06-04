@@ -43,10 +43,10 @@
                         <thead>
                             <tr>
                                 <th style="width: 100px">Kode Kelas</th>
-                                <th style="width: 100px">Kode MatKul</th>
-                                <th>Nama MatKul</th>
                                 <th style="width: 50px">Tahun</th>
                                 <th style="width: 40px">Semester</th>
+                                <th style="width: 100px">Kode MatKul</th>
+                                <th>Nama MatKul</th>
                                 <th style="width: 40px">SKS</th>
                                 <th style="width: 40px">Aksi</th>
                             </tr>
@@ -55,10 +55,10 @@
                             @foreach ($dtKelas as $data)
                             <tr>
                                 <td><a href="{{url('detail',$data->id)}}">{{$data->kode_kelas}}</a> </td>
-                                <td>{{$data->kode_matkul}} </td>
-                                <td>{{$data->nama_matkul}} </td>
                                 <td>{{$data->tahun}} </td>
                                 <td>{{$data->semester}} </td>
+                                <td>{{$data->kode_matkul}} </td>
+                                <td>{{$data->nama_matkul}} </td>
                                 <td>{{$data->sks}} </td>
                                 <td>
                                     <a href="{{url('edit-kelas',$data->id)}}"><i class="fas fa-edit"></i></a>

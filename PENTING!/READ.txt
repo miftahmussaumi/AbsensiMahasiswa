@@ -1,0 +1,9 @@
+<-- Username dan Password untuk login -->
+
+>> User {miftahmussaumi84@gmail.com == 12345}
+>> Mahasiswa {seluruh email terdaftar pada database == 12345} 
+
+
+<-- Import CSV -->
+Gunakan file CSV import yang ada di dalam folder ini bernama
+"Absensi Meets.csv"

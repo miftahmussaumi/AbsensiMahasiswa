@@ -33,11 +33,22 @@
                     <a href="{{url('detail',$dt1->kelas_id)}}" class="btn btn-primary btn-block"><b>Back</b></a>
                     @endforeach
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
         </div>
         <div class="col-md-9">
+            @if(session('error'))
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-times"></i> Alert!</h5>
+                {{session('error')}}
+            </div>
+            @elseif(session('import'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Success!</h5>
+                {{session('import')}}
+            </div>
+            @endif
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
@@ -45,7 +56,7 @@
                         <li class="nav-item"><a class="nav-link" href="#materi" data-toggle="tab">Materi</a></li>
                         <li class="nav-item"><a class="nav-link" href="#upload" data-toggle="tab">Upload File</a></li>
                     </ul>
-                </div><!-- /.card-header -->
+                </div>
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="active tab-pane" id="mahasiswa">

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kelas;
-use App\Http\Controllers\Redirect;
 use Illuminate\Support\Facades\DB;
 
 class KelasController extends Controller

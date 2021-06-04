@@ -90,17 +90,12 @@
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <!-- <input type="submit" class="btn btn-primary"> -->
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>
                     </div>
-                    
-                    <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-dialog -->
             </div>
-            <!-- /.modal -->
         </div>
     </div>
 </div>

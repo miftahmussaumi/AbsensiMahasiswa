@@ -42,8 +42,9 @@
                                 <th style="width: 40px">Aksi</th>
                             </tr>
                         </thead>
-                        @foreach ($dtMahasiswa as $data)
                         <tbody>
+                        @foreach ($dtMahasiswa as $data)
+                        <tr>
                             <td>{{ $data->nim }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->email }}</td>
@@ -52,8 +53,9 @@
                                 |
                                 <a href="{{ url('delete-mahasiswa',$data->id) }}" onclick="return confirm('Apakah Yakin Hapus Data Mahasiswa Ini?')"><i class="fas fa-trash-alt" style="color:#dc3545"></i></a>
                             </td>
-                        </tbody>
+                        </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <!-- /.card-body -->

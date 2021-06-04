@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="invoice p-3 mb-3">
         <form action="{{route('simpan-pertemuan',$kelas_id->id)}}" method="post">
-            @if(session('success'))
+            @if(session('berhasil'))
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5><i class="icon fas fa-check"></i> Succes!</h5>
@@ -19,7 +19,7 @@
             <div class="alert alert-warning alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
-                Pilih Tanggal dengan Benar!
+                Pertemuan Sudah Ada!
             </div>
             @endif
             <div class="row invoice-info">
@@ -30,16 +30,22 @@
                         <tr>
                             <td colspan="2" style="width: 50px">
                                 <div class="form-group">
-                                    <label>Kode Kelas</label>
-                                    <input type="text" class="form-control" name="kode_kelas" value="{{$kelas_id->kode_kelas}}" readonly>
+                                    <label>Mata Kuliah</label>
+                                    <input type="text" class="form-control" name="kode_kelas" value="{{$kelas_id->nama_matkul}}" readonly>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td>
                                 <div class="form-group">
-                                    <label>Pertemuan Ke-</label>
-                                    <input type="number" class="form-control" min="0" name="pertemuan_ke" placeholder="Pertemuan ke-" required>
+                                    <label>Kode Kelas</label>
+                                    <input type="text" class="form-control" name="kode_kelas" value="{{$kelas_id->kode_kelas}}" readonly>
+                                </div>
+                            </td>
+                            <td >
+                                <div class="form-group">
+                                    <label>Pertemuan</label>
+                                    <input type="number" class="form-control" min="0" name="pertemuan_ke" placeholder="ke-" required>
                                 </div>
                             </td>
                         </tr>
@@ -47,13 +53,14 @@
                             <td colspan="2">
                                 <div class="form-group">
                                     <label>Tanggal:</label>
-                                    <input type="date" class="form-control" name="tanggal" placeholder="Enter email" required>
+                                    <input type="date" class="form-control" name="tanggal" placeholder="Tanggal Pertemuan" required>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <a href="{{url('detail',$kelas_id->id)}}" class="btn btn-primary"><- Back</a>
+                                <a href="{{url('detail',$kelas_id->id)}}" class="btn btn-primary">
+                                    <- Back</a>
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-success"><b>Submit</b></button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2021 at 11:30 AM
+-- Generation Time: Jun 04, 2021 at 02:22 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -31,9 +31,9 @@ CREATE TABLE `absensi` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `krs_id` bigint(20) UNSIGNED NOT NULL,
   `pertemuan_id` bigint(20) UNSIGNED NOT NULL,
-  `jam_masuk` time NOT NULL,
-  `jam_keluar` time NOT NULL,
-  `durasi` int(11) NOT NULL,
+  `jam_masuk` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jam_keluar` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `durasi` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -43,8 +43,12 @@ CREATE TABLE `absensi` (
 --
 
 INSERT INTO `absensi` (`id`, `krs_id`, `pertemuan_id`, `jam_masuk`, `jam_keluar`, `durasi`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, '03:50:22', '04:50:22', 1, NULL, NULL),
-(2, 2, 2, '10:50:22', '12:50:22', 2, NULL, NULL);
+(170, 13, 3, '2:50:27', '3:14:19', '23m 52s', '2021-06-04 05:10:31', '2021-06-04 05:10:31'),
+(171, 15, 3, '2:51:16', '3:14:18', '23m 2s', '2021-06-04 05:10:31', '2021-06-04 05:10:31'),
+(172, 18, 2, '2:50:15', '3:14:17', '24m 1s', '2021-06-04 05:10:59', '2021-06-04 05:10:59'),
+(173, 16, 2, '2:50:51', '3:14:19', '23m 27s', '2021-06-04 05:10:59', '2021-06-04 05:10:59'),
+(174, 17, 2, '2:51:12', '3:14:10', '22m 57s', '2021-06-04 05:10:59', '2021-06-04 05:10:59'),
+(175, 19, 47, '2:52:52', '3:14:11', '21m 19s', '2021-06-04 05:22:06', '2021-06-04 05:22:06');
 
 -- --------------------------------------------------------
 
@@ -85,10 +89,10 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`id`, `kode_kelas`, `kode_matkul`, `nama_matkul`, `tahun`, `semester`, `sks`, `created_at`, `updated_at`) VALUES
-(1, 'K001', 'M001', 'Pemrograman Web', 2021, 2, 4, '2021-05-23 01:43:21', '2021-05-23 01:43:21'),
-(2, 'K002', 'M002', 'Apsi', 2021, 2, 3, '2021-05-23 18:33:47', '2021-05-23 18:33:47'),
-(3, 'K003', 'M003', 'DIT', 2020, 1, 3, '2021-05-25 01:04:00', '2021-05-25 01:04:00'),
-(4, 'K004', 'M004', 'Sistem Operasi', 2020, 1, 4, '2021-05-26 18:23:51', '2021-05-26 18:23:51');
+(1, 'K001', 'TSI206', 'Bahasa Pemrograman Web', 2021, 4, 2, '2021-05-23 01:43:21', '2021-06-04 04:57:41'),
+(2, 'K002', 'TSI208', 'Analisis & Perancangan Sistem Informasi', 2021, 4, 4, '2021-05-23 18:33:47', '2021-06-04 03:16:14'),
+(3, 'K003', 'TSI104', 'Dasar Infastruktur Teknologi', 2020, 3, 4, '2021-05-25 01:04:00', '2021-06-04 03:16:05'),
+(15, 'K004', 'PAM212', 'Kalkulus', 2019, 2, 3, '2021-06-02 13:45:13', '2021-06-04 03:16:49');
 
 -- --------------------------------------------------------
 
@@ -109,14 +113,13 @@ CREATE TABLE `krs` (
 --
 
 INSERT INTO `krs` (`id`, `kelas_id`, `mahasiswa_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 3, '2021-05-27 01:19:12', '2021-05-27 01:19:12'),
-(2, 1, 1, '2021-05-27 01:23:01', '2021-05-27 01:23:01'),
-(3, 2, 5, '2021-05-27 06:43:39', '2021-05-27 06:43:39'),
-(4, 2, 2, '2021-05-27 01:19:42', '2021-05-27 01:19:42'),
-(5, 3, 5, '2021-05-27 06:43:39', '2021-05-27 06:43:39'),
-(6, 2, 1, '2021-05-27 01:26:31', '2021-05-27 01:26:31'),
-(7, 3, 3, '2021-05-27 01:26:31', '2021-05-27 01:26:31'),
-(8, 4, 1, '2021-05-27 01:27:59', '2021-05-27 01:27:59');
+(13, 1, 18, '2021-06-04 03:22:32', '2021-06-04 03:22:32'),
+(14, 1, 22, '2021-06-04 03:22:38', '2021-06-04 03:22:38'),
+(15, 1, 21, '2021-06-04 03:22:44', '2021-06-04 03:22:44'),
+(16, 2, 24, '2021-06-04 04:58:37', '2021-06-04 04:58:37'),
+(17, 2, 28, '2021-06-04 04:58:44', '2021-06-04 04:58:44'),
+(18, 2, 20, '2021-06-04 04:58:49', '2021-06-04 04:58:49'),
+(19, 3, 27, '2021-06-04 05:03:50', '2021-06-04 05:03:50');
 
 -- --------------------------------------------------------
 
@@ -139,13 +142,18 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Aufa', '1911522013', 'aufawelza@gmail.com', '$2y$10$Rzt4fYvDv9R9yAR/N85nUO0jfqpWBG3g6VzY28p79Tc5k5LTpAZhO', '2021-05-26 01:37:58', '2021-05-26 01:37:58'),
-(2, 'kevin', '1911523009', 'kevin@gmail.com', '$2y$10$KQTCs22tO5ctt6sHJuFW..n7QNEba17BjAVnpTWae/Zm.DRZXvOc6', '2021-05-26 18:12:37', '2021-05-26 18:16:00'),
-(3, 'Miftah', '1911522009', 'miftah@gmail.com', '$2y$10$gjeyjM6vPIP/ISvmTsi0feo873w3oDV3p0pWByFZEBi97f2WBayVe', NULL, NULL),
-(4, 'testing', '191382940', 'testing@gmail.com', '$2y$10$3XoiOmst4Y39w2xCTTXpR.0O3CK70oJvTt88XovfmOvUXNN//YC1u', '2021-05-26 23:34:46', '2021-05-26 23:34:46'),
-(5, 'fathia', '1911523025', 'fathia@gmail.com', '$2y$10$.RSFg17jsACx4nUfmuhF..9P8rwbGnd4CT17zW018bU28W8usl0LW', '2021-05-26 23:40:56', '2021-05-26 23:40:56'),
-(10, 'Lala', '123456', 'lala@gmail.com', '12345', '2021-05-27 02:12:51', '2021-05-27 02:12:51'),
-(11, 'Gita', '1911522011', 'gita@gmail.com', '12345', '2021-05-27 02:15:16', '2021-05-27 02:15:16');
+(18, 'Fathia Rahma', '1911523013', 'fathia@gmail.com', '$2y$10$qiWUkKx2jqym16HhgmBBLu/2r7FKalg5k2SYNQRSa92plGLjxZOS6', '2021-06-03 22:04:20', '2021-06-04 00:26:17'),
+(19, 'Laila Rahmatul Aufa', '1911522013', 'aufawelza@gmail.com', '$2y$10$.SZFr01aPZhSvn596vxB7OAWNoPUSgfF4RSHNfyCVehuIptvn8nbi', '2021-06-03 22:05:55', '2021-06-03 22:05:55'),
+(20, 'Miftah Mussaumi Adi', '1911522009', 'miftah@gmail.com', '$2y$10$0O/76JmVcvG2hrrYwT9LSuFestyuStfQ05Yd9Q2nW77tTeK18d.bG', '2021-06-03 22:06:06', '2021-06-03 22:06:06'),
+(21, 'M Ravy Octa Nugraha', '1911523007', 'ravy@gmail.com', '$2y$10$Vlrd7v1rIX2jsRUy6bBq8utMR8lwjFrFrnN/sR3NFfN0h5CwG2rk2', '2021-06-03 22:10:47', '2021-06-03 22:10:47'),
+(22, 'M Kevin Beslia', '1911523009', 'kevin@gmail.com', '$2y$10$oLP5za.RbfrjNz/k3AY7n.BjKATyPV7csuByGzCallFvMFKiLlOGe', '2021-06-03 22:11:05', '2021-06-03 22:11:05'),
+(23, 'Nadya Gusdita', '1911521001', 'nadya@gmail.com', '$2y$10$Kv.OSB.a8XEHIWXp1V5WTevL/vSQITfGKyO7xB0Smss3lk0bYfwG6', '2021-06-04 02:29:31', '2021-06-04 04:57:58'),
+(24, 'Rivonny Wulandari', '1911522019', 'vony@gmail.com', '$2y$10$ulLknC1rGKmh5BMmKjbkTuU1ibOZIY/lrYI4oARQ2PGuPSeRhR0Sa', '2021-06-04 02:57:43', '2021-06-04 02:57:43'),
+(25, 'Ade Iqbal', '1911521025', 'iqbal@gmail.com', '$2y$10$GLOLlg1vjs97KmqNghScAewB/6qPiD8XquDwK6fD5j.ZJsoTWHtVm', '2021-06-04 02:58:16', '2021-06-04 02:58:16'),
+(26, 'Hadef Petriza', '1911521007', 'hadef@gmail.com', '$2y$10$adgrHyVR9ScSdm5Ld/3IIedUJs9OCkLZMf2dVJEuKmtSSxASFx2Si', '2021-06-04 02:59:19', '2021-06-04 02:59:19'),
+(27, 'Regita tjahjantari', '1911522021', 'gita@gmail.com', '$2y$10$X1/3bD8O06Q5KcjUKgBeze7K44VJs72E6ApH97G7OFhhgw80u0.wi', '2021-06-04 02:59:46', '2021-06-04 02:59:46'),
+(28, 'Immalatunil Khaira', '1911522017', 'imma@gmail.com', '$2y$10$HxH.eWQI.HwskdrdpZ6lvu6MOR8MsrNIt9WuzU1RSAJZp7isoxC/i', '2021-06-04 03:00:24', '2021-06-04 03:00:24'),
+(29, 'Dhiya Nabila Denta', '1911523021', 'didi@gmail.com', '$2y$10$wGMmOmoNtzkUOa712ElmU.cLq4Om0Cu8jMPzDefoA8k.o9HlGuEMG', '2021-06-04 03:00:47', '2021-06-04 03:00:47');
 
 -- --------------------------------------------------------
 
@@ -176,7 +184,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (48, '2021_05_21_040502_create_mahasiswa_table', 2),
 (49, '2021_05_21_040545_create_krs_table', 2),
 (50, '2021_05_21_040617_create_pertemuan_table', 2),
-(51, '2021_05_21_040639_create_absensi_table', 2);
+(51, '2021_05_21_040639_create_absensi_table', 2),
+(52, '2021_05_31_080126_create_absensi_table', 3);
 
 -- --------------------------------------------------------
 
@@ -216,7 +225,16 @@ INSERT INTO `pertemuan` (`id`, `kelas_id`, `pertemuan_ke`, `tanggal`, `materi`, 
 (3, 1, 1, '2021-05-24', 'dfre', NULL, NULL),
 (4, 1, 3, '2021-05-25', 'ini pertemuan 3', '2021-05-25 01:18:18', '2021-05-25 01:18:18'),
 (5, 1, 4, '2021-05-13', 'r', '2021-05-25 03:36:35', '2021-05-25 03:36:35'),
-(28, 1, 5, '2021-05-27', 'f', '2021-05-25 23:31:59', '2021-05-25 23:31:59');
+(6, 1, 5, '2021-05-27', 'f', '2021-05-25 23:31:59', '2021-05-25 23:31:59'),
+(7, 1, 6, '2021-05-27', 'enam', '2021-05-27 02:37:35', '2021-05-27 02:37:35'),
+(44, 1, 7, '2021-05-29', 'fhgvhgv', '2021-05-28 13:43:05', '2021-05-28 13:43:05'),
+(45, 3, 1, '2021-05-29', 'satu', '2021-05-28 23:19:03', '2021-05-28 23:19:03'),
+(46, 3, 3, '2021-05-30', '233', '2021-05-29 20:36:02', '2021-05-29 20:36:02'),
+(47, 3, 2, '2021-05-30', '1', '2021-05-29 20:36:18', '2021-05-29 20:36:18'),
+(48, 2, 2, '2021-06-04', 'Pertemuan 4', '2021-06-04 05:02:49', '2021-06-04 05:02:49'),
+(49, 3, 4, '2021-06-04', 'Pertemuan ke 4', '2021-06-04 05:04:15', '2021-06-04 05:04:15'),
+(50, 15, 1, '2021-06-04', 'Pertemuan 1', '2021-06-04 05:05:00', '2021-06-04 05:05:00'),
+(51, 15, 2, '2021-06-04', 'Pertemuan ke-2', '2021-06-04 05:05:52', '2021-06-04 05:05:52');
 
 -- --------------------------------------------------------
 
@@ -240,7 +258,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin 1', 'miftahmussaumi84@gmail.com', NULL, '$2y$10$b2b5SkUArhmtifGX4FRbkOfcml94ydTUgtzkSwYPi1411M9e2g6w6', 'p68ZgE7l5haXv8oCVtQH0sPx0HDTtx6pGZYFusWOPFM0JZPpUkweNWJYzmwa', '2021-05-22 17:26:09', '2021-05-22 17:26:09');
+(1, 'Admin 1', 'miftahmussaumi84@gmail.com', NULL, '$2y$10$b2b5SkUArhmtifGX4FRbkOfcml94ydTUgtzkSwYPi1411M9e2g6w6', 'C16X8yJcNMAtrsbJHYSEk1Ddp91ci1J3C6cBfgvUbJS2CYyA8EpndCXTQw4z', '2021-05-22 17:26:09', '2021-05-22 17:26:09');
 
 --
 -- Indexes for dumped tables
@@ -315,7 +333,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -327,31 +345,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `pertemuan`
 --
 ALTER TABLE `pertemuan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `users`
