@@ -63,15 +63,27 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
+                                    <!-- PertemuanController@showDetail -->
                                     @foreach($pert as $dt)
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>{{$dt->nim}}</td>
                                         <td>{{$dt->nama}}</td>
-                                        <td>-</td>
+                                        <td>Hadir</td>
                                         <td>{{$dt->jam_masuk}}</td>
                                         <td>{{$dt->jam_keluar}}</td>
                                         <td>{{$dt->durasi}}</td>
+                                    </tr>
+                                    @endforeach
+                                    @foreach($krs as $absen)
+                                    <tr>
+                                        <td>{{$no++}}</td>
+                                        <td>{{$absen->nim}}</td>
+                                        <td>{{$absen->nama}}</td>
+                                        <td><u>Absen</u></td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -93,8 +105,8 @@
                                         <!-- PertemuanController@showDetail -->
                                         @foreach($kls as $data)
                                         <div class="input-group">
-                                            <input type="text"  name="kelas_id" value="{{ $data->kelas_id }}">
-                                            <input type="text"  name="pertemuan_id" value="{{ $data->pertemuan_id }}">
+                                            <input type="text" hidden name="kelas_id" value="{{ $data->kelas_id }}">
+                                            <input type="text" hidden name="pertemuan_id" value="{{ $data->pertemuan_id }}">
                                         </div>
                                         @endforeach
                                         <label>File Absensi .csv</label>

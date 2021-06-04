@@ -50,7 +50,7 @@ class MahasiswaController extends Controller
                 'nama' => $request->nama,
                 'nim' => $request->nim,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
             ]);
             return redirect('mahasiswa')->with('success', 'Data Mahasiswa Berhasil Ditambahkan');
         }

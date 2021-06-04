@@ -50,21 +50,19 @@ class PertemuanController extends Controller
     }
 
     public function showDetail($id)
-    {
+    {   
+        //Ambil data kehadiran Mahasiswa [Absensi]
         $pert = DB::table('absensi')
         ->rightJoin('krs', 'krs.id', '=', 'absensi.krs_id')
         ->rightJoin('pertemuan', 'pertemuan.id', '=', 'absensi.pertemuan_id')
         ->rightJoin('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
-        ->rightJoin('kelas', 'kelas.id', '=', 'krs.kelas_id')
         ->where('pertemuan.id', '=', $id)
         ->get([
-            'mahasiswa.nim', 'mahasiswa.nama', 'absensi.jam_masuk', 'absensi.jam_keluar',
-            'absensi.durasi', 'kelas.kode_kelas', 'kelas.kode_matkul', 'kelas.nama_matkul',
-            'kelas.tahun','kelas.semester','kelas.sks','pertemuan.pertemuan_ke', 
-            'pertemuan.id AS pertemuan_id', 'pertemuan.tanggal', 'absensi.id AS absensi_id',
-            'pertemuan.materi', 'kelas.id AS kelas_id', 'krs.id AS krs_id'
-            ]); 
+            'mahasiswa.nim', 'mahasiswa.nama', 'absensi.jam_masuk', 
+            'absensi.jam_keluar','absensi.durasi'
+        ]);
 
+        //Ambil data kelas[Kelas]
         $kls = DB::table('kelas')
         ->rightJoin('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
         ->where('pertemuan.id', '=', $id)
@@ -74,7 +72,24 @@ class PertemuanController extends Controller
             'pertemuan.id AS pertemuan_id', 'pertemuan.tanggal',
             'pertemuan.materi', 'kelas.id AS kelas_id'
         ]);
-        
-        return view('Halaman.pertemuan', compact('pert','kls')); 
+
+        foreach ($kls as $dt_kls) {
+            $ambil[] = $dt_kls->kelas_id;
+        }
+
+        foreach ($pert as $dt_pert) {
+            $ambil[] = $dt_pert->nim;
+        }
+        //Ambil data mahasiswa yang tidak
+        $krs = DB::table('kelas')
+        ->join('krs', 'krs.kelas_id', '=', 'kelas.id')
+        ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
+        ->where('kelas.id', '=', $ambil)
+        ->whereNotIn('mahasiswa.nim',$ambil)
+        ->get([
+            'mahasiswa.id AS mahasiswa_id', 'mahasiswa.nim', 'mahasiswa.nama', 'krs.id AS krs_id'
+        ]);
+    
+        return view('Halaman.pertemuan', compact('pert','kls','krs')); 
     }
 }

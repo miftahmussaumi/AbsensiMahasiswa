@@ -51,34 +51,34 @@ class AbsensiController extends Controller
                     }
                     $i++;
                 }
-
-                // echo "<pre>";
-                // dd($data);
+                $masuk=strtotime($data[0][2][1]);
+                echo "<pre>";
+                dd($masuk);
                 $check = count($data);
-                foreach ($data as $dt) {
-                    $cek = DB::table('krs')
-                    ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
-                    ->join('kelas', 'kelas.id', '=', 'krs.kelas_id')
-                    ->where('kelas.id', '=', $request->kelas_id)
-                    ->where('mahasiswa.nim','=',$dt[0])
-                    ->get('krs.id AS krs_id');
-                    $jml = count ($cek);
+                // foreach ($data as $dt) {
+                //     $cek = DB::table('krs')
+                //     ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
+                //     ->join('kelas', 'kelas.id', '=', 'krs.kelas_id')
+                //     ->where('kelas.id', '=', $request->kelas_id)
+                //     ->where('mahasiswa.nim','=',$dt[0])
+                //     ->get('krs.id AS krs_id');
+                //     $jml = count ($cek);
 
-                    // $durasi = (strtotime($dt[2][1]) - strtotime($dt[1][1])) / 60;
-                    if($jml > 0){
-                        foreach ($cek as $c) {
-                            Absensi::create([
-                                'krs_id' => $c->krs_id,
-                                'pertemuan_id' => $request->pertemuan_id,
-                                'jam_masuk' => $dt[1][1],
-                                'jam_keluar' => $dt[2][1],
-                                'durasi' => $dt[4]
-                            ]);
-                            // return redirect('kelas');
-                        }
-                    }
-                }
-                return redirect()->back();
+                //     // $durasi = (strtotime($dt[2][1]) - strtotime($dt[1][1])) / 60;
+                //     if($jml > 0){
+                //         foreach ($cek as $c) {
+                //             Absensi::create([
+                //                 'krs_id' => $c->krs_id,
+                //                 'pertemuan_id' => $request->pertemuan_id,
+                //                 'jam_masuk' => $dt[1][1],
+                //                 'jam_keluar' => $dt[2][1],
+                //                 'durasi' => $dt[4]
+                //             ]);
+                //             // return redirect('kelas');
+                //         }
+                //     }
+                // }
+                // return redirect()->back();
                 
                 
             }
