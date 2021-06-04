@@ -90,9 +90,11 @@
                                 {{csrf_field()}}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        @foreach($pert as $pt)
+                                        <!-- PertemuanController@showDetail -->
+                                        @foreach($kls as $data)
                                         <div class="input-group">
-                                            <input type="text" name="krs_id" value="{{ $pt->krs_id }}">
+                                            <input type="text"  name="kelas_id" value="{{ $data->kelas_id }}">
+                                            <input type="text"  name="pertemuan_id" value="{{ $data->pertemuan_id }}">
                                         </div>
                                         @endforeach
                                         <label>File Absensi .csv</label>
@@ -102,11 +104,11 @@
                                                 <label class="custom-file-label">Choose file</label>
                                             </div>
                                         </div>
-                                        </div>
-                                        <div class="input-group">
-                                            <button type="submit" class="btn btn-primary" id="submit" name="import">Import</button>
-                                        </div>
                                     </div>
+                                    <div class="input-group">
+                                        <button type="submit" class="btn btn-primary" id="submit" name="import">Import</button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

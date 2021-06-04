@@ -17,9 +17,9 @@ class CreateAbsensiTable extends Migration
             $table->id();
             $table->bigInteger('krs_id')->unsigned();
             $table->bigInteger('pertemuan_id')->unsigned();
-            $table->string('jam_masuk',20);
-            $table->string('jam_keluar',20);
-            $table->string('durasi',20);
+            $table->time('jam_masuk',20);
+            $table->time('jam_keluar',20);
+            $table->integer('durasi',20);
             $table->timestamps();
         });
 

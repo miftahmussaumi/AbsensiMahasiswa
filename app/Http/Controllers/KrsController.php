@@ -35,17 +35,12 @@ class KrsController extends Controller
     public function show($id)
     {
         $kelas = Kelas::find($id);
- 
         $pert = DB::table('kelas')
         ->leftJoin('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
         ->where('kelas.id','=',$id)
         ->orderBy('pertemuan.pertemuan_ke')
         ->get([
             'pertemuan.pertemuan_ke','pertemuan.id AS pertemuan_id','kelas.id AS kelas_id']);
-        // SELECT absensi.jam_masuk, absensi.jam_keluar, mahasiswa.nama, kelas.kode_kelas, 
-        // pertemuan.pertemuan_ke, krs.id FROM absensi JOIN pertemuan ON 
-        // pertemuan.id=absensi.pertemuan_id JOIN krs ON krs.id=absensi.krs_id JOIN mahasiswa 
-        // ON mahasiswa.id=krs.mahasiswa_id JOIN kelas ON kelas.id=krs.kelas_id WHERE krs.id='2'
         $krs = DB::table('kelas')
         ->join('krs', 'krs.kelas_id', '=', 'kelas.id')
         ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')

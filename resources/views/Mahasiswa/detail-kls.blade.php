@@ -1,8 +1,8 @@
 @extends('template.index')
 
-@section('title','Mahasiswa')
+@section('title','Detail Kelas')
 @section('judul_atas')
-<h1>Welcome !</h1>
+<h1>Detail Kelas</h1>
 @endsection
 
 @section('container')
@@ -19,37 +19,64 @@
                         <p class="text-sm"><b>Semester : </b>{{$code->semester}}</p>
                         <p class="text-sm"><b>Tahun : </b>{{$code->tahun}}</p>
                         <p class="text-sm"><b>SKS : </b>{{$code->sks}}</p>
+                        <a href="{{ url('mhs', $code->mahasiswa_id) }}" class="btn  btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back </a>
                     </div>
-                    @endforeach
                 </div>
-                <!-- </div> -->
             </div>
             <div class="col-sm-1 invoice-col">
             </div>
-            <div class="col-sm-5 invoice-col">
-                <h4 style="text-align: center;">Daftar Kelas</h4>
+            <div class="col-sm-2 invoice-col">
+                <!-- <h4 style="text-align: center;">Kehadiran Pertemuan</h4> -->
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th width="100">Pertemuan ke-</th>
-                            <th width="100">Status</th>
+                            <th width="100">Kelas {{$code->kode_kelas}}</th>
+                        </tr>
+                        @endforeach
+                    </thead>
+                    <tbody>
+                        @foreach($pert as $pt)
+                        <tr>
+                            <td>Pertemuan-ke {{$pt->pertemuan_ke}}</td>
+                            @endforeach
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-1 invoice-col">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th width="100">Kehadiran</th>
                         </tr>
                     </thead>
-<<<<<<< HEAD
                     <tbody>
-                    @foreach($pert as $pt)
-                        <tr>
-                            <td>{{$pt->pertemuan_ke}}</td>
-                            <td></td>
-                        </tr>
-                    @endforeach
+                        <?php
+                        if($jml > 0){
+                            for ($i = 0; $i < $tot; $i++) {
+                                echo '<tr>';
+                                $i++;
+                                if (key_exists($i, $ambil)) {
+                                    echo '<td>Hadir </td>';
+                                    // print("hadir");
+                                } else {
+                                    echo '<td> <b>Absen </b></td>';
+                                    // print("absen");
+                                }
+                                $i--;
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<tr>';
+                            echo '<td><b>Absensi belum ada</b></td>';
+                            echo '</tr>';
+                        }
+                        ?>
                     </tbody>
-=======
-                    <?php
-                    $no = 1;
-                    ?>
->>>>>>> 0c4135065a085d176a1ffdb90c46a75f4d9efa4b
                 </table>
+
+
             </div>
         </div>
     </div>

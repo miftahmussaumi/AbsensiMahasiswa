@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\Pertemuan;
 use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
@@ -54,28 +55,50 @@ class MahasiswaController extends Controller
 
     public function showDetail($krs_id)
     {
+        //Menampilkan data kelas sesuai KRS
         $kode = DB :: table ('krs')
         ->join('kelas','kelas.id', '=', 'krs.kelas_id')
+        ->join('mahasiswa','mahasiswa.id','=','krs.mahasiswa_id')
         ->where('krs.id', '=', $krs_id)
         ->get(['kelas.kode_kelas','kelas.id','kelas.nama_matkul', 'kelas.semester',
-                'kelas.tahun', 'kelas.sks' ]);
+                'kelas.tahun','kelas.sks', 'mahasiswa.id AS mahasiswa_id' ]);
         foreach ($kode as $kode1) {
             $data[] = $kode1->kode_kelas;
         }
-        $pert = DB :: table('pertemuan')
-        ->join('kelas','pertemuan.kelas_id','=','kelas.id')
-        ->where('kelas.kode_kelas','=',$data)
-        ->orderBy('pertemuan.pertemuan_ke')
+
+        //Melihat kehadiran pertemuan sesuai di absensi
+        $hadir = DB :: table('absensi')
+        ->join('krs','krs.id','=','absensi.krs_id')
+        ->join('kelas','kelas.id','=','krs.kelas_id')
+        ->join('mahasiswa','mahasiswa.id','=','krs.mahasiswa_id')
+        ->join('pertemuan','pertemuan.id','=','absensi.pertemuan_id')
+        ->where('krs.id','=',$krs_id)
         ->get(['pertemuan.pertemuan_ke']);
 
-        // $kelas = DB::table('absensi')
-        // ->rightJoin('krs', 'absensi.krs_id', '=', 'krs.id')
-        // ->rightJoin('kelas', 'kelas.id', '=', 'krs.kelas_id')
-        // ->rightJoin('pertemuan', 'absensi.pertemuan_id', '=', 'pertemuan.id')
-        // ->where('krs.id', '=', $krs_id)
-        // ->get(['pertemuan.pertemuan_ke']);
-    dd($pert);
-        return view('Mahasiswa.detail-kls', compact('pert','kode'));
+        $jml = count(collect($hadir));
+        if($jml > 0){
+            foreach ($hadir as $key => $hdr) {
+                $data1 = $hdr->pertemuan_ke;
+                $ambil[$data1] = $key; 
+            }
+    
+            //Mangambil seluruh data pertemuan pada Kelas
+            $pert = DB :: table('pertemuan')
+            ->join('kelas','pertemuan.kelas_id','=','kelas.id')
+            ->where('kelas.kode_kelas','=',$data)
+            ->orderBy('pertemuan.pertemuan_ke')
+            ->get(['pertemuan.pertemuan_ke']);
+    
+            $tot=count($pert);
+            return view('Mahasiswa.detail-kls', compact('pert','kode','ambil','tot','jml'));
+        } else {
+            $pert = DB::table('pertemuan')
+            ->join('kelas', 'pertemuan.kelas_id', '=', 'kelas.id')
+            ->where('kelas.kode_kelas', '=', $data)
+            ->orderBy('pertemuan.pertemuan_ke')
+            ->get(['pertemuan.pertemuan_ke']);
+            return view('Mahasiswa.detail-kls', compact('pert', 'kode','jml'));
+        }
     }
 
     public function edit($id)
