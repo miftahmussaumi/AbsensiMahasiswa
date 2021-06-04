@@ -39,13 +39,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <!-- <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Mahasiswa" value="{{ old('password', $mhs->password) }}" maxlength="8">
-                            @error('password')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div> -->
                         <div class="form-group">
                             <a href="{{url('mahasiswa')}}" class="btn btn-primary"><- Back</a>
                             <button type="submit" class="btn btn-success">Submit</button>

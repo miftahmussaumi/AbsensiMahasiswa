@@ -129,17 +129,14 @@ class MahasiswaController extends Controller
         $validation = $request->validate([
             'nama' => 'required',
             'nim' => 'required|integer',
-            'email' => 'required|email',
-            'password' => 'required|integer'
+            'email' => 'required|email'
         ],
         [
             'nama.required' => 'Nama Tidak Boleh Kosong',
             'nim.required' => 'NIM Tidak Boleh Kosong',
             'nim.integer' => 'NIM Hanya Boleh Angka',
             'email.required' => 'Email Tidak Boleh Kosong',
-            'email.email' => 'Email Tidak Valid',
-            'password.required' => 'Password Tidak Boleh Kosong',
-            'password.integer' => 'Password Hanya Boleh Angka'
+            'email.email' => 'Email Tidak Valid'
 
         ]
         );
@@ -147,7 +144,6 @@ class MahasiswaController extends Controller
         $nim = $request->nim;
         $nim1 = DB::table('mahasiswa')->where('nim', '=', $nim)->get();
         $jml = count(collect($nim1));
-        dd($jml);
         if ($jml > 0) {
             return back()->with('error', 'Nim sudah pernah diinputkan');
         } else {
