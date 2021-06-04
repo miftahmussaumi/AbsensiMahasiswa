@@ -96,17 +96,10 @@ class KelasController extends Controller
         ]
         );
         
-        $kelas_kode = $request->kode_kelas;
-        $kls = DB::table('kelas') -> where('kode_kelas','=',$kelas_kode)->get();
-        $jml = count(collect($kls));
-    
-        if($jml > 0){
-            return back()->with('error', 'Kode Kelas sudah pernah diinputkan');
-        } else {
             $kls = Kelas::findorfail($id);
             $kls->update($request->all());
             return redirect('kelas')->with('edit','Data Kelas Berhasil Diperbarui');
-        }
+
     }
 
     //hapus

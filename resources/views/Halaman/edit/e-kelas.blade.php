@@ -7,8 +7,7 @@
 
 @section('container')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
+    <div class="invoice p-3 mb-3">
         @if(session('error'))
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -16,45 +15,79 @@
             {{ session('error') }}
         </div>
         @endif
-            <div class="card">
-                <div class="card-body">
-                    <form action="{{url('update-kelas',$kls->id)}}" method="post">
-                    {{csrf_field()}}
-                        <div class="form-group">
-                            <label>Kode Kelas</label>
-                            <input type="text" id="kode_kelas" name="kode_kelas" class="form-control" placeholder="Kode Kelas" value="{{ $kls->kode_kelas }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Kode Matkul</label>
-                            <input type="text" id="kode_matkul" name="kode_matkul" class="form-control" placeholder="Kode Matkul" value="{{ $kls->kode_matkul }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Nama Matkul</label>
-                            <input type="text" id="nama_matkul" name="nama_matkul" class="form-control" placeholder="Nama Matkul" value="{{ $kls->nama_matkul }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Tahun</label>
-                            <input type="text" id="tahun" name="tahun" class="form-control" placeholder="Tahun" value="{{ $kls->tahun }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Semester</label>
-                            <input type="text" id="semester" name="semester" class="form-control" placeholder="Semester" value="{{ $kls->semester }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label>SKS</label>
-                            <input type="text" id="sks" name="sks" class="form-control" placeholder="SKS" value="{{ $kls->sks }}" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.card-body -->
+    <div class="card card-primary">
+        <form action="{{ url('update-kelas',$kls->id) }}" method="post">
+            {{csrf_field()}}
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label>Kode Kelas</label>
+                                <input type="text" class="form-control @error('kode_kelas') is-invalid @enderror" value="{{ old('kode_kelas', $kls->kode_kelas) }}" readonly name="kode_kelas" placeholder="Kode Kelas">
+                                @error('kode_kelas')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label>Kode Mata Kuliah</label>
+                                <input type="text" class="form-control @error('kode_matkul') is-invalid @enderror" value="{{ old('kode_matkul', $kls->kode_matkul) }}" name="kode_matkul" placeholder="Kode MatKul">
+                                @error('kode_matkul')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label>Nama Mata Kuliah</label>
+                                <input type="text" class="form-control @error('nama_matkul') is-invalid @enderror" value="{{ old('nama_matkul', $kls->nama_matkul) }}" min="0" name="nama_matkul" placeholder="Nama Mata Kuliah">
+                                @error('nama_matkul')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <label>Tahun</label>
+                                <input type="text" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun', $kls->tahun) }}" min="0" name="tahun" placeholder="Tahun" maxlength="4">
+                                @error('tahun')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <label>Semester</label>
+                                <input type="text" class="form-control @error('semester') is-invalid @enderror" value="{{ old('semester', $kls->semester) }}" min="0" name="semester" placeholder="Semester" maxlength="2">
+                                @error('semester')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror   
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="form-group">
+                                <label>SKS</label>
+                                <input type="text" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks', $kls->sks) }}" min="0" name="sks" placeholder="sks" maxlength="1">
+                                @error('sks')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="{{url('kelas')}}" class="btn btn-primary"><- Back</a>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <!-- /.card -->
+        </form>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </div>
 @endsection
