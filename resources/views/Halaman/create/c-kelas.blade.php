@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('title','Kelas')
+@section('title','Create Kelas')
 @section('judul_atas')
 <h1>Tambah Pertemuan</h1>
 @endsection
