@@ -55,7 +55,6 @@
             <!-- ./col -->
             <div class="col-sm-12 invoice-col">
                 <br>
-                From
                 <address>
                     <strong>Nama Kelompok : Fantastic Four</strong><br>
                     Anggota Kelompok :<br>
