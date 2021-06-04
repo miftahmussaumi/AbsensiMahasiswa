@@ -9,25 +9,32 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation"></i> Data gagal disimpan</h5>
+            {{ session('error') }}
+        </div>
+        @endif
             <div class="card">
                 <div class="card-body">
                     <form action="{{url('update-kelas',$kls->id)}}" method="post">
                     {{csrf_field()}}
                         <div class="form-group">
                             <label>Kode Kelas</label>
-                            <input type="text" id="kode_kelas" name="kode_kelas" class="form-control" placeholder="Kode Kelas" readonly value="{{ $kls->kode_kelas }}" required>
+                            <input type="text" id="kode_kelas" name="kode_kelas" class="form-control" placeholder="Kode Kelas" value="{{ $kls->kode_kelas }}" required>
                         </div>
                         <div class="form-group">
                             <label>Kode Matkul</label>
-                            <input type="text" id="kode_matkul" name=kode_matkul" class="form-control" placeholder="Kode Matkul" value="{{ $kls->kode_matkul }}" required>
+                            <input type="text" id="kode_matkul" name="kode_matkul" class="form-control" placeholder="Kode Matkul" value="{{ $kls->kode_matkul }}" required>
                         </div>
                         <div class="form-group">
                             <label>Nama Matkul</label>
-                            <input type="text" id=nama_matkul"" name="nama_matkul" class="form-control" placeholder="Nama Matkul" value="{{ $kls->nama_matkul }}" required>
+                            <input type="text" id="nama_matkul" name="nama_matkul" class="form-control" placeholder="Nama Matkul" value="{{ $kls->nama_matkul }}" required>
                         </div>
                         <div class="form-group">
                             <label>Tahun</label>
-                            <input type="text" id=tahun"" name="tahun" class="form-control" placeholder="Tahun" value="{{ $kls->tahun }}" required>
+                            <input type="text" id="tahun" name="tahun" class="form-control" placeholder="Tahun" value="{{ $kls->tahun }}" required>
                         </div>
                         <div class="form-group">
                             <label>Semester</label>
