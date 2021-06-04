@@ -49,7 +49,7 @@
                         <tr>
                             <th style="width: 100px">Nim</th>
                             <th>Nama</th>
-                            <th style="width: 30px">#</th>
+                            <th style="width: 30px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
