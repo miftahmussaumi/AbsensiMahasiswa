@@ -143,10 +143,20 @@ class MahasiswaController extends Controller
 
         ]
         );
-        $mhs = Mahasiswa::findorfail($id);
-        $mhs->update($request->all());
 
-        return redirect('mahasiswa')->with('edit','Data Mahasiswa Berhasil Diedit');
+        $nim = $request->nim;
+        $nim1 = DB::table('mahasiswa')->where('nim', '=', $nim)->get();
+        $jml = count(collect($nim1));
+        dd($jml);
+        if ($jml > 0) {
+            return back()->with('error', 'Nim sudah pernah diinputkan');
+        } else {
+            $mhs = Mahasiswa::findorfail($id);
+            $mhs->update($request->all());
+
+            return redirect('mahasiswa')->with('edit','Data Mahasiswa Berhasil Diedit');
+        }
+        
     }
 
     public function destroy($id)

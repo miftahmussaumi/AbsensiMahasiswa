@@ -8,6 +8,13 @@
 @section('container')
 <div class="container-fluid">
         <div class="invoice p-3 mb-3">  
+        @if(session('error'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-exclamation"></i> Data gagal disimpan</h5>
+            {{ session('error') }}
+        </div>
+        @endif
                 <div class="col-sm-4 invoice-col">
                     <form action="{{ url('update-mahasiswa',$mhs->id) }}" method="post">
                     {{csrf_field()}}
@@ -20,7 +27,7 @@
                         </div>
                         <div class="form-group">
                             <label>NIM</label>
-                            <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" placeholder="NIM Mahasiswa" readonly value="{{ old('nim', $mhs->nim) }}">
+                            <input type="text" id="nim" name="nim" class="form-control @error('nim') is-invalid @enderror" placeholder="NIM Mahasiswa" value="{{ old('nim', $mhs->nim) }}">
                             @error('nim')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -32,13 +39,13 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Password</label>
                             <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password Mahasiswa" value="{{ old('password', $mhs->password) }}" maxlength="8">
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <a href="{{url('mahasiswa')}}" class="btn btn-primary"><- Back</a>
                             <button type="submit" class="btn btn-success">Submit</button>
