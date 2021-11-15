@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class PertemuanController extends Controller
 {
-    public function create()
+    public function create() 
     {
         return view('Halaman.create.c-pert');
     }

@@ -17,11 +17,11 @@ class KrsController extends Controller
         return view('Halaman.krs'); 
     }
 
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         // dd($request->all());
         Krs::create([
-            'kelas_id' => $request->kelas_id,
+            'kelas`_id' => $request->kelas_id,
             'mahasiswa_id'=> $request->id_mhs
         ]);
         return back()->with('success', 'Mahasiswa berhasil ditambahkan !');
