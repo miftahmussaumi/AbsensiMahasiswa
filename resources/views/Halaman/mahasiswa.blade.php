@@ -47,7 +47,7 @@
                         <tr>
                             <td>{{ $data->nim }}</td>
                             <td>{{ $data->nama }}</td>
-                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->email }}</td> 
                             <td>
                                 <a href="{{ url('edit-mahasiswa',$data->id) }}"><i class="fas fa-edit"></i></a>
                                 |
