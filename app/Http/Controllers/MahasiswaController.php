@@ -57,7 +57,7 @@ class MahasiswaController extends Controller
     }
 
     public function show($mahasiswa_id)
-    {
+    { 
 
         $mahasiswa = Mahasiswa::find($mahasiswa_id);
         $kelas = DB::table('krs')
